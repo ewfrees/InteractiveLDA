@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Statistical Code | Interactive Features of Loss Data Analytics</title>
-  <meta name="description" content="Chapter 4 Statistical Code | Interactive Features of Loss Data Analytics" />
+  <title>Interactive Features of Loss Data Analytics</title>
+  <meta name="description" content="Interactive Features of Loss Data Analytics" />
   <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Statistical Code | Interactive Features of Loss Data Analytics" />
+  <meta property="og:title" content="Interactive Features of Loss Data Analytics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="https://github.com/ewfrees/Loss-Data-Analytics/InteractiveLDA/" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Statistical Code | Interactive Features of Loss Data Analytics" />
+  <meta name="twitter:title" content="Interactive Features of Loss Data Analytics" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="S-Exercises.html">
 
+<link rel="next" href="introduction-to-interactive-features.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -427,23 +427,39 @@ document.getElementById("defaultOpen").click();
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="S:StatisticalCode" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Statistical Code</h1>
-<ul>
-<li><p>As the baseline, we have already remarked that <code>R</code> statistical code appears in the text, although it does not overwhelm readers via the <em>Show/Hide</em> features that we are using.</p></li>
-<li><p>It will be straight forward to also include <strong>Python</strong> code in the same fashion.</p></li>
-<li><p>We have a <a href="https://ewfrees.github.io/LDARcode/index.html">supporting site for statistical code</a> that allows viewers to get more experience analyzying loss data using <code>R</code>.</p></li>
-<li><p>There are a variety of ways of learning coding procedures interactively. One option is <a href="https://www.datacamp.com">Datacamp</a>. In particular, they have developed an <code>R</code> package, <a href="https://support.datacamp.com/hc/en-us/articles/360007749853-What-is-DataCamp-Light-">Datacamp Light</a>. This allows us to integrate this interactive approach into our authoring system. <a href="https://ewfreesres.github.io/RegressModel/index.html">Here</a> is a link to an online regression tutorial done using this approach. There are a few little technical details but we think these are now ironed out. This is a promising option that will help make the book special.</p></li>
-</ul>
+<div id="header">
+<h1 class="title">Interactive Features of Loss Data Analytics</h1>
+<p class="author"><em>An open text authored by the Actuarial Community</em></p>
+</div>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p style="text-align:right;">
+<em>Date: 05 August 2019</em>
+</p>
+<div id="project-goal" class="section level4 unnumbered">
+<h4>Project Goal</h4>
+<p>The project goal is to have the actuarial community author our textbooks in a collaborative fashion. To get involved, please visit our <a href="https://sites.google.com/a/wisc.edu/loss-data-analytics/">Open Actuarial Textbooks Project Site</a>.</p>
+<h5 style="text-align: center;">
+<a id="display.T:Frequency.1Intro" href="javascript:togglecode
+('display.T:Frequency.2Intro','display.T:Frequency.1Intro');"><i><strong>R Code for Frequency Table</strong></i></a>
+</h5>
+<div id="display.T:Frequency.2Intro" style="display: none">
+<pre><code>Insample &lt;- read.csv(&quot;Insample.csv&quot;, header=T,  na.strings=c(&quot;.&quot;), stringsAsFactors=FALSE)
+Insample2010 &lt;- subset(Insample, Year==2010)
+table(Insample2010$Freq)</code></pre>
+</div>
 
+
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="S-Exercises.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
+<a href="introduction-to-interactive-features.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

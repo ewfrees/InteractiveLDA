@@ -2,6 +2,7 @@ book_filename: "LossDataAnalytics"
 output_dir: "docs"
 rmd_files: ["References/Packages.Rmd",
            "References/Glossary.Rmd",
+            "index.Rmd",
             "IntroInteractive.Rmd",
             "Quizzes/QuizChap.Rmd",
             "ExternalExercises.Rmd"]
