@@ -15,12 +15,7 @@ github-repo: https://github.com/ewfrees/Loss-Data-Analytics/InteractiveLDA/
 <p style="text-align:right;">
 *Date: `r format(Sys.Date(), "%d %B %Y")`*</p>
 
-
-
-####Project Goal {-}
-
-The project goal is to have the actuarial community author our textbooks in a collaborative fashion. To get involved, please visit our
-[Open Actuarial Textbooks Project Site](https://sites.google.com/a/wisc.edu/loss-data-analytics/).
+This repository describes interactive features of the *Loss Data Analytics* text that are being developed, in process, and in the planning stages. By **interactive features**, we start with simple things like layering content (such as Show/Hide way of displaying code below) and moving on from there.
 
 
 <h5 style="text-align: center;"><a id="display.T:Frequency.1Intro" href="javascript:togglecode

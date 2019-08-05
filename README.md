@@ -1,6 +1,6 @@
 
 # Open Actuarial Textbooks Project Goal
-The goal is to have the actuarial community author our textbooks in a collaborative fashion. *GitHub* provides a natural development environment to achieve this goal. See the [Open Actuarial Textbooks Project Site](https://OpenActTexts.github.io) for more information about this project.
+The goal is to have the actuarial community author our textbooks in a collaborative fashion. *GitHub* provides a natural development environment to achieve this goal. 
 
 ## Loss Data Analytics
 
@@ -14,9 +14,10 @@ To see our progress, see
 * [Online Version](https://ewfrees.github.io/Loss-Data-Analytics/index.html)
 * [Source code is available at our GitHub site](https://github.com/OpenActTexts/Loss-Data-Analytics).
 * Prospective contributors should check out our [Style Guide](https://OpenActTexts.github.io/StyleGuideLDA/index.html)
+* See the [Open Actuarial Textbooks Project Site](https://OpenActTexts.github.io) for more information about this project.
 
 ## Interactive Features
 
-This repository describes the interactive features being developed for *Loss Data Analytics*.
+[This repository](https://ewfrees.github.io/InteractiveLDA/index.html) describes the interactive features being developed for *Loss Data Analytics*.
 
 
