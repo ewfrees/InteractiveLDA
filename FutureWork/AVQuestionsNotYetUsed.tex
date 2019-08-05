@@ -1,0 +1,455 @@
+\documentclass[11pt,a4paper,onecolumn]{article}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{graphics,graphicx}
+\usepackage{natbib}
+\usepackage{color}
+\usepackage[table]{xcolor}
+%\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+%\usepackage{subfig}
+\usepackage{enumerate}
+\newcommand{\tabitem}{~~\llap{--}~~}
+%\titleformat*{\section}{\large\bfseries}
+\newenvironment{arcitem}{
+	\begin{list}{--}{
+			\topsep=1pt %amount of extra vertical space at top of list
+			%\partopsep %extra length at top if environment is prececed by a blank line (it should be a rubber length)
+			\itemsep=1pt %amount of extra vertical space between items
+			\parsep=0pt %amount of vertical space between paragraphs within an item
+			\leftmargin=19pt %horizontal distance between the left margins of the environment and the list; must be nonnegative
+			%\rightmargin %horizontal distance betwen the right margins of the enviroment and the list; must be nonnegative
+			%\listparindent %amount of extra space for paragraph indent after the first in an item; can be negative
+			%\itemindent %indentation of first line of an item; can be negative
+			%\labelsep %separation between end of the box containing the label and the text of the first line of an item
+			%\labelwidth %normal width of the box containing the label; if the actual label is bigger, the natural width is used, extending into the space for the first line of the item's text
+	}}
+	{\end{list}}
+\newcommand{\AV}[1]{\textcolor{blue}{[AV - #1 ]\,}}
+%\titlespacing\section{0pt}{11pt plus 0pt minus 2pt}{0pt plus 0pt minus 0pt}
+
+\title{Ahn Vu Questions Not Yet Used}
+\author{Anh Vu}
+\date{\today}
+\usepackage{natbib}
+\bibliographystyle{econPeriod}
+\begin{document}
+	\maketitle
+
+These questions are not multiple choice types. Bring in later, possibly using \textbf{Datacamp}.
+
+\section{Chapter 8}
+
+\subsection{Categorical variables and multiplicative tariff}
+\begin{enumerate}
+\item Consider the data set ``dataCar" in the R package ``insuranceData". It contains the the number of claims (numclaims) and exposure (exposure) for individual policyholder. It also contains various rating factors including:
+\begin{itemize}
+	\item Vehicle body type (${veh}\_{body}$): BUS, CONVT, COUPE, HBACK, HDTOP, MCARA, MIBUS, PANVN, RDSTR, SEDAN, STNWG, TRUCK, UTE
+	\item Vehicle age ($veh\_{age}$): 1 (youngest), 2, 3, 4
+	\item Gender ($gender$): F, M
+	\item Area ($area$): A, B, C, D, E, F
+	\item Policyholder's age ($agecat$): 1 (youngest), 2, 3, 4, 5, 6
+\end{itemize}
+\begin{enumerate}
+	\item Write down a Poisson regression model with log-link on the number of claims with respect to the above rating factors. For area, consider only 2 factors: area D and Others. Use base factors:vehicle body type SEDAN, vehicle age 1, gender F, area D, policyholder's age category 1.  \par
+	Answer:
+	\begin{align*}
+	\log \mu_i & = \beta_0 + \sum_{t=1}^{12}\beta_tI(veh\_body = type_t) + \sum_{t=13}^{15}\beta_tI(veh\_age = t-11) \\
+	& + \beta_{16}I(gender = M) +
+	  \beta_{17}I(area = Others) + \sum_{t=18}^{22}\beta_tI(agecat = t-16) + \log m_i.
+	\end{align*}
+  For simplicity of expression, $type_t,\,t=1,...,12$ represents the 12 types of vehicle type other than SEDAN.
+	\item Perform the Poisson regression in R.
+	\item What is the relativity in the tariff for SEDAN vehicle type?\par
+	Answer: 1
+	\item What is the relativity in the tariff for area Other?\par
+	Answer:  1.13686367
+	\item What is the relativity in the tariff for age category 4?\par
+	Answer: 0.78539832
+	\item What is the expected claim frequency of a policyholder who has CONVT vehicle type, vehicle age 2, gender F, area D, and policyholder's age 3?
+	Answer: 0.03641556 per unit of exposure.
+	\item What is the expected claim frequency of a policyholder who has SEDAN vehicle type, vehicle age 1, gender F, area Others, and policyholder's age 1?\par
+	Answer: 1.13686367 per unit of exposure.
+\end{enumerate}
+\end{enumerate}
+
+\section{Chapter 9}
+
+\subsection{Limited fluctuation credibility}
+\begin{enumerate}
+	\item How many losses are required for full credibility?\par
+	Answer: 2,305
+	\item If the number of claims has a Negative Binomial distribution with $\beta=1$, how many loses are required?\par
+	Answer: 3,842
+	\item What is the full credibility standard for the pure premium (calculated as aggregate losses divided by exposures)?\par
+	Answer: 2,305
+\end{enumerate}
+
+\subsection{B\"{u}hlmann credibility}
+\begin{enumerate}
+	\item For any risk in a population, the number of claims $N$ in a year has a Poisson distribution with parameter $\lambda$. There are 2 classes of risks in the population, each with the same number of risks. The number of claims for each risk in Class A is a Poisson random variable with mean $\theta_A$ which has an exponential distribution with pdf $f(\theta_A) = e^{-\theta_A}$. The number of claims for each risk in Class B is a Poisson random variable with mean $\theta_B$ which has a Gamma (2,1) distribution. A risk was selected at random from the population and all claims were recorded over a five-year period. The total number of claims over the five-year period was 10.
+	\begin{enumerate}
+		\item What is the expected number of claims for an insured chosen at random from Class B?\par
+		Answer: 2.
+		\item If a risk is selected at random from the population, what is the expected number of claims in a year?\par
+		Answer: $0.5\times 1 + 0.5 \times 2 = 1.5$.
+		\item It can be calculated that $\sigma^2(A) = 2$ and $\sigma^2(B) = 4$. Calculate the EPV and VMH for the population. \par
+		Answer: EPV is $0.5\times 2+0.5\times 4 = 3$, VMH is $0.5\times(1-1.5)^2 + 0.5\times (1-2)^2 = 0.625$.
+		\item Use B\"{u}hlmann credibility to estimate the annual expected number of claims for the risk\par
+		Answer:
+		\begin{align*}
+		\bar{X} & = 10/5=2\\
+		K & = 3/0.625 = 4.8\\
+		Z & = 5/(5+4.8) = 0.51\\
+		\hat{\mu}(\theta) &=0.51*2 + (1-0.51)*1.5 = 1.755
+		\end{align*}
+	\end{enumerate}
+
+\end{enumerate}
+\subsection{B\"{u}hlmann-Straub credibility}
+ A commercial automobile policyholder had the following number of policies and total claim costs over a two-year period:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{ccc}
+			\hline
+			Year & Number of policies & Total claim cost\\
+			\hline
+			1 & 31 & 38,314\\
+			2 & 40 & 32,291\\
+			\hline
+		\end{tabular}
+	\end{table}
+The total claim cost in a year for each policy in the policyholder’s fleet is Gamma distributed with shape parameter $\alpha$ and scale parameter 3. Parameter $\alpha$ is normal distributed with mean 300 and variance 2. The number of policies in year 3 is 43. Use B\"{u}hlmann-Straub credibility to estimate the expected total claim cost in year 3.\par
+Answer:\\
+Expected claim costs for one policy is 900. \\
+Average cost per unit of exposure is 994.4366.\\
+EPV is 2,700.\\
+VHM is 18.\\
+K is 150.\\
+Number of exposures in the experience period is 71.\\
+The credibility is 0.321267.\\
+Credibility weighted estimated for the average claim cost for one unit of exposure is 930.3394.\\
+Expected total cost for year 3 is 40,004.59.
+\subsection{Bayesian inference and B\"{u}hlmann credibility}
+The size of a claim $X$ follows an Exponential distribution with density $f(x|\theta) = \theta e^{-\theta x}$. The parameter $\theta$ has a Gamma distribution with shape parameter $\alpha$ and rate parameter$\beta$. The historical observations of claim sizes are $x_1,\dots, x_n$.
+\begin{enumerate}
+	\item Find the posterior distribution of $\theta$.\par
+	Answer: Gamma $(\alpha+n,\sum_{i=1}^{n}x_i + \beta)$.
+	\item Find the expression for the posterior expected claim size.\par
+	Answer: $\dfrac{\sum_{i=1}^{n}x_i + \beta}{\alpha + n-1}$
+	\item Show that the B\"{u}hlmann credibility estimate exact matches the Bayesian results.\par
+
+		Answer: \\
+	EPV is $\dfrac{\beta^2}{(\alpha-1)(\alpha-2)}$.\\
+	VHM is $\dfrac{\beta^2}{(\alpha-1)^2(\alpha-2)}$.\\
+	Credibility $K$ is $\alpha-1$.\\
+	Overall mean is $\dfrac{\beta}{\alpha-1}$. \\
+	Putting together, we can show that
+	\begin{align*}
+	\hat{\mu} = \dfrac{n}{n+\alpha-1}\dfrac{\sum x_i}{n} + \left(1-\dfrac{n}{n+\alpha-1}\right)\dfrac{\beta}{n+\alpha-1} = \dfrac{\sum_{i=1}^{n}x_i + \beta}{\alpha + n-1}
+	\end{align*}
+\end{enumerate}
+
+\subsection{Estimating credibility parameters}
+	\begin{enumerate}
+		\item  Two policyholders had total claims over a four-year period as shown in the table below. Estimate the expected total claims for each policyholder using B\"{u}hlmann credibility.\par
+		\begin{table}[H]
+			\centering
+			\begin{tabular}{c|cccc}
+				\hline
+				Year & 1 & 2 & 3& 4\\
+			 \hline
+				Policyholder 1 & 230 & 265 & 198 & 240\\
+				Policyholder 2 & 156 & 150 & 140 & 180\\
+				\hline
+			\end{tabular}
+		\end{table}
+		Answer:\\
+		\begin{align*}
+		\hat{\mu}_A = 231.53\qquad \hat{\mu}_B = 158.22
+		\end{align*}
+		\item Three policyholders had claims shown in the table below. Calculate the nonparametric estimate for the VHM.\par
+			\begin{table}[H]
+			\centering
+			\begin{tabular}{c|cccc}
+				\hline
+				Policyholder & & Year 1 & Year 2 & Year 3 \\
+				\hline
+			A & Number of clams & 0 & 2 & 1\\
+			A & Insured vehicles & 1 & 2 & 2\\
+			\hline
+				B & Number of clams & 0 & 0 & 1\\
+			B & Insured vehicles & 0 & 2  & 3 \\
+             \hline
+            C & Number of claims & 1 & 2 & 1\\
+           C & Insured vehicles & 2 & 4 & 3\\			
+				\hline
+			\end{tabular}
+		\end{table}
+	Answer: It can be calculated that $VHM = -0.48$.\\
+	The process variance is so large that it is not possible to estimate the VHM.
+	\item (SOA exam, May 2010) The number of claims a driver has during the year is assumed to be Poisson distributed with an unknown mean that varies by driver. The experience for 100 drivers is as follows:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cc}
+			\hline
+			Number of claims during the year & Number of drivers\\
+			\hline
+			0 & 54\\
+			1 & 33\\
+			2&10\\
+			3&2\\
+			4& 1\\
+			\hline
+		\end{tabular}
+	\end{table}
+Determine the credibility of one year's experience for a single driver using B\"{u}hlmann credibility. \par
+Answer: $EPV = 0.63,\quad VHM = 0.05,\quad Z = 0.073$.
+	\end{enumerate}
+\section{Chapter 10}
+
+\subsection{Tails of distributions}
+\begin{enumerate}
+\item Let $X\sim \text{Exponential} (\theta)$ with distribution function $f(x) = \lambda e^{\lambda x}$. Determine whether this distribution is light tailed or heavy tailed based on moments. \\
+Answer: $\mu_k' = \lambda^{-n}n! <\infty$, hence the distribution is light tailed.
+\item Let $X\sim \text{Gamma}(\alpha,\theta),\,\alpha>1,\,\theta>0$ and $Y\sim \text{Exponential}(\frac{1}{\theta})$. Compare the tail behaviour of these distributions using the limiting behaviour method. \\
+Answer: It can be easily shown that the gamma distribution is heavier tailed than the exponential distribution.
+\end{enumerate}
+\subsection{Risk measures}
+
+\begin{enumerate}
+
+\item Check if the variance is a coherent risk measure. \\
+Answer: No. It can be shown that the variance is neither subadditive nor positively homogeneous.
+
+\item Consider an insurance loss random variable $X\sim \text{Pareto}(\alpha,\theta),\,\alpha>0,\,\theta>0$. Justify the closed form VaR expression $\theta[(1-q)^{-1/\alpha}-1]$ of this distribution.
+\item Which of the following is not correct about $TVaR$?
+\begin{enumerate}[A.]
+	\item It is the expected value of losses that exceed a specified VaR.
+	\item TVaR of a strictly increasing linear transformation of a random variable is the function of TVaR of the original random variable.
+	\item It is less sensitive to the choice of confidence level compared to VaR.
+	\item \textbf{It is not subadditive.}
+	\item It accounts for all events above the confidence level.
+\end{enumerate}
+\item Calculate TVaR for variables $X$ and $Y$ in Example 10.2.5 to justify that $Y$ is riskier than $X$. \\
+Answer: TVaR of $X$ is 97.5, TVaR of $Y$ is 126.7047.
+\end{enumerate}
+\subsection{Reinsurance}
+\begin{enumerate}
+	\item Summarise some basic reinsurance treaties by proportional/non proportional categories and expressions for the amounts paid by direct insurer and reinsurer in the following table:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lcccc}
+			\hline
+			Type & Prop/Non-prop? & Total loss & Paid by insurer & Paid by reinsurer\\
+			\hline
+			Quota share ($c$)& & $X$ & &\\
+			Stop-loss ($M$)& & $X$ & &\\
+			Excess of loss ($M_i$)& & $X = \sum_{i=1}^{n}X_i$ & & \\
+			\hline
+		\end{tabular}
+	\end{table}
+Answer:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lcccc}
+		\hline
+		Type & Prop/Non-prop? & Total loss & Paid by insurer & Paid by reinsurer\\
+		\hline
+		Quota share ($c$)& Proportional &$X$ & $cX$& $(1-c)X$\\
+		Stop-loss ($M$) & Non-proportional & $X$ & $\min(X,M)$& $\max(0,X-M)$ \\
+		Excess of loss ($M_i$)& Non-proportional& $X = \sum_{i=1}^{n}X_i$ & $\sum_{i=1}^{n}\min(X_i,M_i)$& $X - \sum_{i=1}^{n}\min(X_i,M_i)$ \\
+		\hline
+	\end{tabular}
+\end{table}
+\item Consider the graph in Example 10.3.2 and answer the following questions
+\begin{enumerate}
+	\item Why do the values $c_1,\,c_2,\,c_3$ increase linearly with $K$?
+	\item Why does the order of lines $c_1>c_2>c_3$ from top to bottom of the graph?
+\end{enumerate}
+Answer:\\
+\begin{enumerate}
+	\item We have $K = \sum_{i=1}^{3}c_iE(X_i)$, hence $K$ is a linear function of $c_i$.
+	\item The behaviour of the lines $c_1>c_2>c_3$ is a result of the distributions they apply to. We have that $c_i\propto \frac{E(X_i)}{Var(X_i)}$.  Other things being equal, a higher revenue as measured by $E(X_i)$ means a higher value of $c_i$. In the same way, a higher value of uncertainty as measured by $Var(X_i)$
+	means a lower value of $c_i$. We have the following mean and variance of $X_1,\,X_2,\,X_3$:
+	\begin{itemize}
+		\item $E(X_1)=500;\,Var(X_1)=1e+06-500$
+		\item $E(X_2)=1000;\,Var(X_1)=4e+06-1000$
+		\item $E(X_2)=1000;\,Var(X_1)=3e+06-1000$
+	\end{itemize}
+It can then be seen easily that $c_1>c_2>c_3$.
+\end{enumerate}
+
+\item Consider a surplus share proportional treaty where the retained line is 10,000 and the limit is 50,000. Let $X$  be the total loss. Write down the expression for the loss paid by the insurer and the reinsurer and draw diagrams of their payments (on the $y$ axis) with respect to the total loss (on the $x$ axis).\\
+Answer: Insurer pays
+\begin{align*}
+\begin{cases}
+X, & \text{if }X\leq 10,000,\\
+10,000, & \text{if }10,000<X\leq 60,000,\\
+X-50,000, & \text{if } X>60,000.
+\end{cases}
+\end{align*}
+Reinsurer pays
+\begin{align*}
+\begin{cases}
+0, & \text{if }X\leq 10,000,\\
+X-10,000, & \text{if }10,000<X\leq 60,000,\\
+50,000, & \text{if } X>60,000.
+\end{cases}
+\end{align*}
+Diagrams can then be drawn using these expressions.
+\item For the total loss and each of the parties in Example 10.3.4, draw a diagram of their payments (on the $y$ axis) with respect to the total loss (on the $x$ axis).
+\item  Consider example 10.3.6. Now you also consider retaining 30\% of the directors and executive officers risk $X_3$ and 20\% of the cyber risks $X_4$, in addition to existing stop loss arrangement of building risks $X_1$ and motor vehicles risks $X_2$. Answer questions (a)-(c) in Example 10.3.6 for this new portfolio. How does the retained portfolio risk in this case compared to when $X_3$ and $X_4$ are fully covered by insurer? \\
+Answer:
+\begin{enumerate}
+	\item    Expected claim amount
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{rrr}
+			\hline
+			Retained & Insurer & Total \\
+			\hline
+			 752.41 & 1791.05 & 2543.46 \\
+			\hline
+		\end{tabular}
+	\end{table}
+\item   80th, 90th, 95th, and 99th percentiles
+\begin{table}[H]
+	\centering
+	\begin{tabular}{rrrrr}
+		\hline
+		&  80\% & 90\% & 95\% & 99\% \\
+		\hline
+		Retained & 937.55 & 1284.00 & 1713.35 & 3188.34 \\
+		Insurer & 2418.87 & 3424.39 & 4745.83 & 9084.53 \\
+		Total & 3351.35 & 4675.04 & 6464.20 & 12159.02 \\
+		\hline
+	\end{tabular}
+\end{table}
+\item Since the retained risk now includes parts of $X_3$ and $X_4$, the portfolio risk is longer tailed compared to when these risks are not included.
+\end{enumerate}
+\end{enumerate}
+
+\section{Chapter 13}
+
+\subsection{Some R functions}
+ Consider the dataset ``Anscombe" in the R package ``carData". This data contains US state public-school expenditures.
+\begin{enumerate}
+	\item Provide descriptive statistics of the variables ``education", ``income", ``young" and ``urban" in this dataset. \\
+	Answer:\\
+	% latex table generated in R 3.5.1 by xtable 1.8-3 package
+	% Sun Apr 28 20:52:35 2019
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{llll}
+			\hline
+			 education &     income &     young &     urban \\
+			\hline
+			Min.   :112.0   & Min.   :2081   & Min.   :326.2   & Min.   : 322.0   \\
+			1st Qu.:165.0   & 1st Qu.:2786   & 1st Qu.:342.1   & 1st Qu.: 552.5   \\
+			Median :192.0   & Median :3257   & Median :354.1   & Median : 664.0   \\
+			Mean   :196.3   & Mean   :3225   & Mean   :358.9   & Mean   : 664.5   \\
+			3rd Qu.:228.5   & 3rd Qu.:3612   & 3rd Qu.:369.1   & 3rd Qu.: 790.5   \\
+			Max.   :372.0   & Max.   :4425   & Max.   :439.7   & Max.   :1000.0   \\
+			\hline
+		\end{tabular}
+	\end{table}
+\item Perform k-means cluster analysis with 5 clusters on this dataset. Note that you need to scale the data set first (using function ``scale(.)") to standardise explanatory variable units. What are the size of these clusters?\\
+Answer: 1, 16, 8, 15, 11
+\item Plot a histogram of the ``education" variable. Fit a gamma distribution to this variable. \\
+Answer: Parameter estimates: 19.31636309,    0.09839537.
+\item Perform a linear regression with ``education" variable as the explanatory variable and ``income" as the response variable. \\
+Answer: Coefficients: 1645.383 (intercept), 8.048.
+\end{enumerate}
+
+\section{Chapter 14}
+
+
+\subsection{Variable types}
+\begin{enumerate}
+
+\item Identify the type of variable for each of the following:
+\begin{enumerate}
+	\item Satisfactory level on the scale from 1 to 5 in a teaching evaluation survey. (Answer: ordinal variable)
+	\item The breed of a dog. (Answer: nominal variable)
+	\item Answer to a True or False question. (Answer: binary variable)
+	\item Number of people living in New York city. (Answer: discrete variable)
+	\item Gas price. (Answer: continuous variable)
+\end{enumerate}
+
+\end{enumerate}
+\subsection{Classic measures of scalar association}
+\begin{enumerate}
+\item In this question you will be asked to perform some analyses on the ``dataCar" data set available in the R package ``insuranceData". You first need to install the package (if you do not have it installed yet), and load the dataset.
+\begin{enumerate}
+	\item Calculate the Pearson correlation, Spearman's rho and Kendall's tau correlation between ``exposure" (exposure) and ``numclaims" (number of claims) variables. \\
+	Answer: Pearson: 0.1344, Spearman's rho:  0.1337, Kendall's tau: 0.1091
+	\item Without doing any calculations, do you think these correlations will change if we:
+	\begin{enumerate}
+		\item scale the variable ``numclaims" with a multiplication factor of 2.
+		\item apply a log transformation to the variable ``exposure".
+	\end{enumerate}
+Confirm your answer by performing the calculations in R. \\
+Answer: i. No, ii. Pearson correlation changes, Spearman's rho and Kendall's tau are unaffected.
+\item Calculate the odds ratio between the two variables ``clm" (claims) and ``gender" (gender). How do you interpret this result?\\
+Answer: 0.9836
+\item Test whether the variable ``clm" is independent of the variable ``area
+" (area) using Pearson chi-square statistics. Do you get the same answer when you use the likelihood ratio test?\\
+Answer: Both tests have p-value less than the 0.05 significance level, we reject the null hypothesis that these variables are independent.
+\item Which type of correlation do you use to assess the relationship between ``clm" and ``agecat" (age category) variables? Calculate this correlation in R. What is the nature of their relationship? \\
+Answer: Polychoric correlation = -0.06. There is a negative dependence between the two variables.
+\end{enumerate}
+\end{enumerate}
+
+
+\subsection{Application using copulas}
+Consider the ``loss" data set studied in this section.
+\begin{enumerate}
+	\item Fit log-normal distributions to the ``expenses" and ``losses" variable. You may consider using the ``fitdistr" from the R MASS package. \\
+	Answer: ``losses" parameter estimates: 9.37345394   1.63756011, ``expenses" parameter estimates:  8.52197632   1.42942232.
+	\item Perform probability integral transformation on these variables with log-normal fitting. Plot the histogram of the transformed variables.
+	\item Transform the two variables ``expenses" and ``losses" to normal scores and plot the histograms of these scores.
+	\item Draw scatter plots of uniform transformed variables and of normal scores obtained in questions 2 and 3. Calculate the Spearman's rho correlation and compare the result with the Spearman's rho correlation calculated with Pareto fitting in the illustration. \\
+	Answer: Spearman's rho: 0.4519872 which is the same as the Spearman's rho with Pareto fitting. (Do you know why?)
+	\item Fit Frank's copula with the maximum likelihood method to the transformed uniform variables. Compute the Spearman's correlation corresponding to the fitted copula parameter. Compare the copula estimates and Spearman's correlation with the results from Pareto fitting in the illustration. \\
+	Answer: Frank's copula parameter estimate: 3.176 and Spearman's rho: 0.469. These are not the same as the copula and correlation with Pareto fitting.
+	\item Another type of bivariate copula is Gumbel-Hougaarg specified by
+	\begin{align*}
+	C_{\theta}^{GH}(u) = \exp\left(-\left(\sum_{i=1}^{2}(-\log u_i)^{\theta}\right)^{1/\theta}\right),\quad \theta \in [1,\theta)
+	\end{align*}
+	Fit this copula with maximum likelihood method to the transformed uniform variables. Compute the Spearman's correlation corresponding to the fitted copula parameter and compare it with the Spearman's rho correlation from the Frank's copula. \\
+	Answer: Gumbel's parameter estimate: 1.457 and Spearman's rho: 0.449. The Spearman's rho is not the same as the one implied from the previously fitted Frank's copula.
+	\item What conclusion can you draw regarding the uniqueness of copula on marginal choices from this exercise?\\
+	Answer: The estimate of copula depends on the choice of marginal. Spearman's correlation also varies depending on the type of copula chosen. However, it does not depend on the choice of marginals.
+\end{enumerate}
+\subsection{Types of copulas}
+\begin{enumerate}
+\item Verify the elliptical copula generator for normal distribution, t-distribution and Cauchy distribution in table 14.6.
+\item Find the generator functions of Frank copula, Clayton copula and Gumbel-Hougaard copula respectively (for simplification, you can consider the bivariate case).\\
+Answer: \\
+Frank copula:
+\begin{align*}
+g(x) = -\log\left(\dfrac{e^{\theta x}-1}{e^\theta - 1}\right)
+\end{align*}
+Clayton copula:
+\begin{align*}
+g(x) = \dfrac{1}{\theta}\left(x^{-\theta} - 1\right)
+\end{align*}
+Gumbel-Hougaard copula:
+\begin{align*}
+g(x) = (-\log(x))^\theta
+\end{align*}
+\end{enumerate}
+
+\subsection{Why is dependence modeling important?}
+\begin{enumerate}
+\item \AV{If R code for simulation using Gaussian copula is made available} Obtain expected value and quantiles for the portfolio in the example in this chapter using t copula. Comment on impact of the choice of copula on quantiles of the portfolio.
+\end{enumerate}
+
+\end{document}
+
+

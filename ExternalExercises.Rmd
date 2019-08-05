@@ -1,0 +1,52 @@
+# Exercises {#S:Exercises}
+
+## The Issue
+
+Users expect to see exercises in a textbook. For *Loss Data Analytics*, we have many sources and types of exercises that we can draw upon. The issue is deciding upon the type to re-inforce the emphasis of the book.
+
+Currently, the book features almost as many different exercise types as there are authors. Some chapters have no exercises, others have an extensive amount.
+
+These differing viewpoints are also reflected in the examples in the book. To illustrative, some chapters focus on mathmatical/statistical developments, some on data analytic  aspects, some on business content. This is the good and bad associated with a heterogenous collection of authors.
+
+We can reduce the effects of this heterogeneity by providing a large pool of exercises. Some may exist outside of the book. With a large pool of exercises, users (teachers) can draw upon the subset that reflects their area of interests.
+
+## Wordpress Exercises
+
+Here is a series of exercises that guide the viewer through some of the theoretical foundations of *Loss Data Analytics*. Each tutorial is based on one or more questions from the professional actuarial examinations – typically the Society of Actuaries short term actuarial mathematics exam that used to be known as "Exam C." These exercises are coded using **Wordpress**. 
+
+We can explore bringing them into the `R` **Bookdown** environment.
+
+### 2. Frequency Modeling
+
+<p style="text-align: center;">
+[Frequency Distribution Guided Tutorials](https://www.ssc.wisc.edu/~jfrees/loss-data-analytics/loss-data-analytics-problems/)
+</p>
+
+### 3. Modeling Loss Severity
+
+<p style="text-align: center;">
+[Severity Distribution Guided Tutorials](http://www.ssc.wisc.edu/~jfrees/loss-data-analytics/chapter-3-modeling-loss-severity/loss-data-analytics-severity-problems/)
+</p>
+
+### 4. Model Selection and Estimation
+
+<p style="text-align: center;">
+[Model Selection Guided Tutorials](http://www.ssc.wisc.edu/~jfrees/loss-data-analytics/loss-data-analytics-model-selection/)
+</p>
+
+### 5. Aggregate Loss Models
+
+<p style="text-align: center;">
+[Aggregate Loss Guided Tutorials](https://www.ssc.wisc.edu/~jfrees/loss-data-analytics/aggregate-loss-guided-tutorials/)
+</p>
+
+
+# Statistical Code {#S:StatisticalCode}
+
+*  As the baseline, we have already remarked that `R` statistical code appears in the text, although it does not overwhelm readers via the *Show/Hide* features that we are using.
+
+* It will be straight forward to also include **Python** code in the same fashion.
+
+*  We have a [supporting site for statistical code](https://ewfrees.github.io/LDARcode/index.html) that allows viewers to get more experience analyzying loss data using `R`.
+
+*  There are a variety of ways of learning coding procedures interactively. One option is [Datacamp](https://www.datacamp.com). In particular, they have developed an `R` package, [Datacamp Light](https://support.datacamp.com/hc/en-us/articles/360007749853-What-is-DataCamp-Light-). This allows us to integrate this interactive approach into our authoring system. [Here](https://ewfreesres.github.io/RegressModel/index.html) is a link to an online regression tutorial done using this approach. There are a few little technical details but we think these are now ironed out. This is a promising option that will help make the book special.

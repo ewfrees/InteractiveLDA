@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="S-Exercises.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Mathjax -->
+<script type='text/x-mathjax-config'>
+		MathJax.Hub.Config({
+			extensions: ['tex2jax.js'],
+			jax: ['input/TeX', 'output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+				displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+				processEscapes: true
+			},
+			'HTML-CSS': { availableFonts: ['TeX'] }
+		});
+</script>
+
+<!-- The following code is for the quizzes -->
+<script src="https://surveyjs.azureedge.net/1.0.50/survey.jquery.js"></script>
+<link href="https://surveyjs.azureedge.net/1.0.50/survey.css" type="text/css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>  
+
+<script>
+function markdownConverterEWF() {  
+//Create showdown markdown converter
+var converter = new showdown.Converter();
+converter.setOption('ghCompatibleHeaderId', true);
+survey
+    .onTextMarkdown
+    .add(function (survey, options) {
+        //convert the mardown text to html
+        var str = converter.makeHtml(options.text);
+        //remove root paragraphs <p></p>
+        str = str.substring(3);
+        str = str.substring(0, str.length - 4);
+        //set html
+        options.html = str;
+         MathJax.Hub.Queue(['Typeset',MathJax.Hub, 'options']);
+    });  
+};
+// Quiz Header info
+const jsonHeader = { 
+    showProgressBar: "bottom",
+    showTimerPanel: "none",
+    maxTimeToFinishPage: 10000,
+    maxTimeToFinish: 25000,
+    firstPageIsStarted: true,
+    startSurveyText: "Start Quiz" //,
+//    title: "Does This Make Sense?"
+}
+// One and Two question quizzes
+function jsonSummary1EWF(json) {  
+let jsonEnd1 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd1;
+};
+
+
+function jsonSummary2EWF(json) {  
+let jsonEnd2 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd2;
+};
+
+// Three, four, and five question quizzes
+function jsonSummary3EWF(json) {  
+let jsonEnd3 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][3]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][3]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][3]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd3;
+};
+
+function jsonSummary4EWF(json) {  
+jsonEnd4 = jsonSummary3EWF(json);
+jsonEnd4.completedHtml = jsonEnd4.completedHtml +  
+"<br>"+
+json["pages"][4]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][4]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][4]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd4;
+};
+
+function jsonSummary5EWF(json) {  
+jsonEnd5 = jsonSummary4EWF(json);
+jsonEnd5.completedHtml = jsonEnd5.completedHtml +  
+"<br>"+
+json["pages"][5]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][5]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][5]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd5;
+};
+
+function jsonSummary6EWF(json) {  
+jsonEnd6 = jsonSummary5EWF(json);
+jsonEnd6.completedHtml = jsonEnd6.completedHtml +  
+"<br>"+
+json["pages"][6]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][6]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][6]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd6;
+};
+
+function jsonSummary7EWF(json) {  
+jsonEnd7 = jsonSummary6EWF(json);
+jsonEnd7.completedHtml = jsonEnd7.completedHtml +  
+"<br>"+
+json["pages"][7]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][7]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][7]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd7;
+};
+
+function jsonSummary8EWF(json) {  
+jsonEnd8 = jsonSummary7EWF(json);
+jsonEnd8.completedHtml = jsonEnd8.completedHtml +  
+"<br>"+
+json["pages"][8]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][8]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][8]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd8;
+};
+
+function jsonSummary9EWF(json) {  
+jsonEnd9 = jsonSummary8EWF(json);
+jsonEnd9.completedHtml = jsonEnd9.completedHtml +  
+"<br>"+
+json["pages"][9]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][9]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][9]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd9;
+};
+
+
+function jsonSummary10EWF(json) {  
+jsonEnd10 = jsonSummary9EWF(json);
+jsonEnd10.completedHtml = jsonEnd10.completedHtml +  
+"<br>"+
+json["pages"][10]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][10]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][10]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd10;
+};
+
+
+function jsonSummary11EWF(json) {  
+jsonEnd11 = jsonSummary10EWF(json);
+jsonEnd11.completedHtml = jsonEnd11.completedHtml +  
+"<br>"+
+json["pages"][11]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][11]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][11]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd11;
+};
+
+
+
+</script>  
+<!-- This completes the code for the quizzes -->
+
+
+<!-- Various toggle functions used throughout --> 
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+function toggleQuiz(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Quiz Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";}}      
+</script>
+
+<!-- A few functions for revealing definitions -->
+<script language="javascript">
+<!--   $( function() {
+    $("#tabs").tabs();
+  } ); -->
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Interactive Features of Loss Data Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html"><i class="fa fa-check"></i><b>1</b> Introduction to Interactive Features</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#active-learning"><i class="fa fa-check"></i><b>1.1</b> Active Learning</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#S:Features"><i class="fa fa-check"></i><b>1.2</b> LDA Interactive Features</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#what-we-have"><i class="fa fa-check"></i><b>1.2.1</b> What we Have</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#in-process"><i class="fa fa-check"></i><b>1.2.2</b> In Process</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#plans-for-future-work"><i class="fa fa-check"></i><b>1.2.3</b> Plans for Future Work</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#S:NonFeatures"><i class="fa fa-check"></i><b>1.3</b> LDA Non-Interactive Features</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html"><i class="fa fa-check"></i><b>2</b> End of Section Quizzes</a><ul>
+<li class="chapter" data-level="2.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#introduction-to-loss-data-analytis"><i class="fa fa-check"></i><b>2.1</b> 1. Introduction to Loss Data Analytis</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-1.1"><i class="fa fa-check"></i><b>2.1.1</b> Section 1.1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-1.2"><i class="fa fa-check"></i><b>2.1.2</b> Section 1.2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-1.3"><i class="fa fa-check"></i><b>2.1.3</b> Section 1.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#frequency-modeling"><i class="fa fa-check"></i><b>2.2</b> 2. Frequency Modeling</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.1"><i class="fa fa-check"></i><b>2.2.1</b> Section 2.1</a></li>
+<li class="chapter" data-level="2.2.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.2"><i class="fa fa-check"></i><b>2.2.2</b> Section 2.2</a></li>
+<li class="chapter" data-level="2.2.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.3"><i class="fa fa-check"></i><b>2.2.3</b> Section 2.3</a></li>
+<li class="chapter" data-level="2.2.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.4"><i class="fa fa-check"></i><b>2.2.4</b> Section 2.4</a></li>
+<li class="chapter" data-level="2.2.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.5"><i class="fa fa-check"></i><b>2.2.5</b> Section 2.5</a></li>
+<li class="chapter" data-level="2.2.6" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.6"><i class="fa fa-check"></i><b>2.2.6</b> Section 2.6</a></li>
+<li class="chapter" data-level="2.2.7" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.7"><i class="fa fa-check"></i><b>2.2.7</b> Section 2.7</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#modeling-loss-severity"><i class="fa fa-check"></i><b>2.3</b> 3. Modeling Loss Severity</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.1"><i class="fa fa-check"></i><b>2.3.1</b> Section 3.1</a></li>
+<li class="chapter" data-level="2.3.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.2"><i class="fa fa-check"></i><b>2.3.2</b> Section 3.2</a></li>
+<li class="chapter" data-level="2.3.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.3"><i class="fa fa-check"></i><b>2.3.3</b> Section 3.3</a></li>
+<li class="chapter" data-level="2.3.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.4"><i class="fa fa-check"></i><b>2.3.4</b> Section 3.4</a></li>
+<li class="chapter" data-level="2.3.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.5"><i class="fa fa-check"></i><b>2.3.5</b> Section 3.5</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#model-selection-and-estimation"><i class="fa fa-check"></i><b>2.4</b> 4. Model Selection and Estimation</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.1"><i class="fa fa-check"></i><b>2.4.1</b> Section 4.1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.2"><i class="fa fa-check"></i><b>2.4.2</b> Section 4.2</a></li>
+<li class="chapter" data-level="2.4.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.3"><i class="fa fa-check"></i><b>2.4.3</b> Section 4.3</a></li>
+<li class="chapter" data-level="2.4.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.4"><i class="fa fa-check"></i><b>2.4.4</b> Section 4.4</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#aggregate-loss-models"><i class="fa fa-check"></i><b>2.5</b> 5. Aggregate Loss Models</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.1"><i class="fa fa-check"></i><b>2.5.1</b> Section 5.1</a></li>
+<li class="chapter" data-level="2.5.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.2"><i class="fa fa-check"></i><b>2.5.2</b> Section 5.2</a></li>
+<li class="chapter" data-level="2.5.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.3"><i class="fa fa-check"></i><b>2.5.3</b> Section 5.3</a></li>
+<li class="chapter" data-level="2.5.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.4"><i class="fa fa-check"></i><b>2.5.4</b> Section 5.4</a></li>
+<li class="chapter" data-level="2.5.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.5"><i class="fa fa-check"></i><b>2.5.5</b> Section 5.5</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#risk-classification"><i class="fa fa-check"></i><b>2.6</b> 8. Risk Classification</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-8.1"><i class="fa fa-check"></i><b>2.6.1</b> Section 8.1</a></li>
+<li class="chapter" data-level="2.6.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-8.2"><i class="fa fa-check"></i><b>2.6.2</b> Section 8.2</a></li>
+<li class="chapter" data-level="2.6.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-8.3"><i class="fa fa-check"></i><b>2.6.3</b> Section 8.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#experience-rating-using-credibility-theory"><i class="fa fa-check"></i><b>2.7</b> 9. Experience Rating Using Credibility Theory</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.1"><i class="fa fa-check"></i><b>2.7.1</b> Section 9.1</a></li>
+<li class="chapter" data-level="2.7.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.2"><i class="fa fa-check"></i><b>2.7.2</b> Section 9.2</a></li>
+<li class="chapter" data-level="2.7.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.3"><i class="fa fa-check"></i><b>2.7.3</b> Section 9.3</a></li>
+<li class="chapter" data-level="2.7.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.6"><i class="fa fa-check"></i><b>2.7.4</b> Section 9.6</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#insurance-portfolio-management-including-reinsurance"><i class="fa fa-check"></i><b>2.8</b> 10. Insurance Portfolio Management including Reinsurance</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-10.1"><i class="fa fa-check"></i><b>2.8.1</b> Section 10.1</a></li>
+<li class="chapter" data-level="2.8.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-10.2"><i class="fa fa-check"></i><b>2.8.2</b> Section 10.2</a></li>
+<li class="chapter" data-level="2.8.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-10.3"><i class="fa fa-check"></i><b>2.8.3</b> Section 10.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#data-and-systems"><i class="fa fa-check"></i><b>2.9</b> 13. Data and Systems</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-13.1"><i class="fa fa-check"></i><b>2.9.1</b> Section 13.1</a></li>
+<li class="chapter" data-level="2.9.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-13.2"><i class="fa fa-check"></i><b>2.9.2</b> Section 13.2</a></li>
+<li class="chapter" data-level="2.9.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-13.3"><i class="fa fa-check"></i><b>2.9.3</b> Section 13.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#dependence-modeling"><i class="fa fa-check"></i><b>2.10</b> 14. Dependence Modeling</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.1"><i class="fa fa-check"></i><b>2.10.1</b> Section 14.1</a></li>
+<li class="chapter" data-level="2.10.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.2"><i class="fa fa-check"></i><b>2.10.2</b> Section 14.2</a></li>
+<li class="chapter" data-level="2.10.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.3"><i class="fa fa-check"></i><b>2.10.3</b> Section 14.3</a></li>
+<li class="chapter" data-level="2.10.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.5"><i class="fa fa-check"></i><b>2.10.4</b> Section 14.5</a></li>
+<li class="chapter" data-level="2.10.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.6"><i class="fa fa-check"></i><b>2.10.5</b> Section 14.6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="S-Exercises.html"><a href="S-Exercises.html"><i class="fa fa-check"></i><b>3</b> Exercises</a><ul>
+<li class="chapter" data-level="3.1" data-path="S-Exercises.html"><a href="S-Exercises.html#the-issue"><i class="fa fa-check"></i><b>3.1</b> The Issue</a></li>
+<li class="chapter" data-level="3.2" data-path="S-Exercises.html"><a href="S-Exercises.html#wordpress-exercises"><i class="fa fa-check"></i><b>3.2</b> Wordpress Exercises</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="S-Exercises.html"><a href="S-Exercises.html#frequency-modeling-1"><i class="fa fa-check"></i><b>3.2.1</b> 2. Frequency Modeling</a></li>
+<li class="chapter" data-level="3.2.2" data-path="S-Exercises.html"><a href="S-Exercises.html#modeling-loss-severity-1"><i class="fa fa-check"></i><b>3.2.2</b> 3. Modeling Loss Severity</a></li>
+<li class="chapter" data-level="3.2.3" data-path="S-Exercises.html"><a href="S-Exercises.html#model-selection-and-estimation-1"><i class="fa fa-check"></i><b>3.2.3</b> 4. Model Selection and Estimation</a></li>
+<li class="chapter" data-level="3.2.4" data-path="S-Exercises.html"><a href="S-Exercises.html#aggregate-loss-models-1"><i class="fa fa-check"></i><b>3.2.4</b> 5. Aggregate Loss Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="S-StatisticalCode.html"><a href="S-StatisticalCode.html"><i class="fa fa-check"></i><b>4</b> Statistical Code</a></li>
+<li class="divider"></li>
+<li><a href="https://ewfrees.github.io" target="blank">Loss Data Analytics on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="S:StatisticalCode" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Statistical Code</h1>
+<ul>
+<li><p>As the baseline, we have already remarked that <code>R</code> statistical code appears in the text, although it does not overwhelm readers via the <em>Show/Hide</em> features that we are using.</p></li>
+<li><p>It will be straight forward to also include <strong>Python</strong> code in the same fashion.</p></li>
+<li><p>We have a <a href="https://ewfrees.github.io/LDARcode/index.html">supporting site for statistical code</a> that allows viewers to get more experience analyzying loss data using <code>R</code>.</p></li>
+<li><p>There are a variety of ways of learning coding procedures interactively. One option is <a href="https://www.datacamp.com">Datacamp</a>. In particular, they have developed an <code>R</code> package, <a href="https://support.datacamp.com/hc/en-us/articles/360007749853-What-is-DataCamp-Light-">Datacamp Light</a>. This allows us to integrate this interactive approach into our authoring system. <a href="https://ewfreesres.github.io/RegressModel/index.html">Here</a> is a link to an online regression tutorial done using this approach. There are a few little technical details but we think these are now ironed out. This is a promising option that will help make the book special.</p></li>
+</ul>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="S-Exercises.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["LossDataAnalytics.pdf", "LossDataAnalytics.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
