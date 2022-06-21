@@ -17,7 +17,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Interactive Features of Loss Data Analytics</a></li>
       after: |
-        <li><a href="https://ewfrees.github.io" target="blank">Loss Data Analytics on GitHub</a></li>
+        <li><a href="https://github.com/ewfrees/InteractiveLDA" target="blank">Interactive Features of LDA on GitHub</a></li>
   toc_depth: 3
   edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
   download: null

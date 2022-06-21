@@ -1,4 +1,4 @@
-#End of Section Quizzes {#S:EndSectionQuizzes}
+# End of Section Quizzes {#S:EndSectionQuizzes}
 
 ## 1. Introduction to Loss Data Analytis
 

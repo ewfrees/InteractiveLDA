@@ -15,9 +15,16 @@
 </script>
 
 <!-- The following code is for the quizzes -->
-<script src="https://surveyjs.azureedge.net/1.0.50/survey.jquery.js"></script>
-<link href="https://surveyjs.azureedge.net/1.0.50/survey.css" type="text/css" rel="stylesheet"/>
+
+<script src="https://unpkg.com/survey-jquery@1.1.3/survey.jquery.min.js"></script>
+<link href="https://unpkg.com/survey-core@1.1.3/survey.min.css" type="text/css" rel="stylesheet"/>
+
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>  
+
 
 <script>
 function markdownConverterEWF() {  
