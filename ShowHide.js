@@ -16,14 +16,35 @@
 
 <!-- The following code is for the quizzes -->
 
-<script src="https://unpkg.com/survey-jquery@1.1.3/survey.jquery.min.js"></script>
-<link href="https://unpkg.com/survey-core@1.1.3/survey.min.css" type="text/css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.jquery.min.js" integrity="sha512-crns4ssuZ0ZB7E/ObQ7zObXkCHZBlHeT6jIPf6wGiJdLS/enMRhXZhEeG2Bjn1zosfB2Juu3bsi7TZiFqYc1tQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.min.css" integrity="sha512-DWAuH8boE1jVPsuLezsDF0i/Jpuc+HsqkzU+KifRR7Q41ktYd0SotteMkdv61c+5CpYiH78nm5ps3fCpEbV/ww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<!-- 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.jquery.js" integrity="sha512-krInqrnBipjMi3+ndH1uacEWopMRgRduG6+NwrugsW/S7045SBOr/PmiOnEHwTK55HQhpHgQZEbTg+FlvEjpYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.css" integrity="sha512-VDXdSRnKoUbz2v9PTlz6bcHbZaAHaeE5FZhLAUKdGDgf6zG/CCoHQO9w+wInaFDiGuxrMfjK6Yh4NSQVlzHv5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<script src="https://unpkg.com/survey-jquery@1.6.2/survey.jquery.js"></script>
+<link href="https://unpkg.com/survey-jquery@1.6.2/survey.css" type="text/css" rel="stylesheet"/>
 
 
 
+<script src="https://unpkg.com/survey-jquery@1.0.50/survey.jquery.js"></script>
+<link href="https://unpkg.com/survey-jquery@1.0.50/survey.css" type="text/css" rel="stylesheet"/>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js" integrity="sha512-xYCw466QkZIhmSWNzIpubbU0cgObksa2fKUd1nDY2hj0VOVksbWZQYnTX6pkQbPFrC9VMHCHb8msQ3W40n50Kg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script> 
+
 
 
 <script>
@@ -54,6 +75,8 @@ const jsonHeader = {
     startSurveyText: "Start Quiz" //,
 //    title: "Does This Make Sense?"
 }
+
+
 // One and Two question quizzes
 function jsonSummary1EWF(json) {  
 let jsonEnd1 = { 
