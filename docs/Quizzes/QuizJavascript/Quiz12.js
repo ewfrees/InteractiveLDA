@@ -1,5 +1,5 @@
 
-
+Survey.StylesManager.applyTheme("modern");
 function init() {
 
 var json = { 
@@ -80,7 +80,7 @@ correctAnswer: "Because loss reserves are not traded on the open market, accurat
 }]}
 ],
 completedHtml: 
-"<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
+"<h6>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h6>"
 }; // ends json variable declaration
 
 // Add questions as needed

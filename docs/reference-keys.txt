@@ -5,8 +5,8 @@ what-we-have
 in-process
 plans-for-future-work
 S:NonFeatures
-S:EndSectionQuizzes
-introduction-to-loss-data-analytis
+CEndSectionQuizzes
+introduction-to-loss-data-analytics
 section-1.1
 section-1.2
 section-1.3
@@ -58,11 +58,11 @@ section-14.2
 section-14.3
 section-14.5
 section-14.6
-S:Exercises
+CExercises
 the-issue
 wordpress-exercises
 frequency-modeling-1
 modeling-loss-severity-1
 model-selection-and-estimation-1
 aggregate-loss-models-1
-S:StatisticalCode
+CStatisticalCode

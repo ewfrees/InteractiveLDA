@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 End of Section Quizzes | Interactive Features of Loss Data Analytics</title>
+  <meta name="description" content="Chapter 2 End of Section Quizzes | Interactive Features of Loss Data Analytics" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 End of Section Quizzes | Interactive Features of Loss Data Analytics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/ewfrees/Loss-Data-Analytics/InteractiveLDA/" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 End of Section Quizzes | Interactive Features of Loss Data Analytics" />
+  
+  
+  
+
+<meta name="author" content="An open text authored by the Actuarial Community" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-interactive-features.html"/>
+<link rel="next" href="CExercises.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+<!-- Mathjax Version 2-->
+<script type='text/x-mathjax-config'>
+		MathJax.Hub.Config({
+			extensions: ['tex2jax.js'],
+			jax: ['input/TeX', 'output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+				displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+				processEscapes: true
+			},
+			'HTML-CSS': { availableFonts: ['TeX'] }
+		});
+</script>
+
+<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js"> </script>
+
+<!-- May wish to upgrade to Mathjax Version 3 Soon-->
+
+
+<!-- The following code is for the quizzes -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+<link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+
+
+<!-- This is the code before 2022 ...
+
+<script src="https://surveyjs.azureedge.net/1.0.50/survey.jquery.js"></script>
+<link href="https://surveyjs.azureedge.net/1.0.50/survey.css" type="text/css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>  
+ -->
+ 
+ 
+<script>
+function markdownConverterEWF() {  
+//Create showdown markdown converter
+var converter = new showdown.Converter();
+converter.setOption('ghCompatibleHeaderId', true);
+survey
+    .onTextMarkdown
+    .add(function (survey, options) {
+        //convert the markdown text to html
+        var str = converter.makeHtml(options.text);
+        //remove root paragraphs <p></p>
+        str = str.substring(3);
+        str = str.substring(0, str.length - 4);
+        //set html
+        options.html = str;
+        MathJax.Hub.Queue(['Typeset',MathJax.Hub, 'options']);
+    });  
+};
+
+// Quiz Header info
+const jsonHeader = { 
+    showProgressBar: "bottom",
+    showTimerPanel: "none",
+    maxTimeToFinishPage: 10000,
+    maxTimeToFinish: 25000,
+    firstPageIsStarted: true,
+    startSurveyText: "Start Quiz" //,
+//    title: "Does This Make Sense?"
+}
+
+
+// One and Two question quizzes
+function jsonSummary1EWF(json) {  
+let jsonEnd1 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd1;
+};
+
+
+function jsonSummary2EWF(json) {  
+let jsonEnd2 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd2;
+};
+
+// Three, four, and five question quizzes
+function jsonSummary3EWF(json) {  
+let jsonEnd3 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][3]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][3]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][3]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd3;
+};
+
+function jsonSummary4EWF(json) {  
+jsonEnd4 = jsonSummary3EWF(json);
+jsonEnd4.completedHtml = jsonEnd4.completedHtml +  
+"<br>"+
+json["pages"][4]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][4]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][4]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd4;
+};
+
+function jsonSummary5EWF(json) {  
+jsonEnd5 = jsonSummary4EWF(json);
+jsonEnd5.completedHtml = jsonEnd5.completedHtml +  
+"<br>"+
+json["pages"][5]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][5]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][5]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd5;
+};
+
+function jsonSummary6EWF(json) {  
+jsonEnd6 = jsonSummary5EWF(json);
+jsonEnd6.completedHtml = jsonEnd6.completedHtml +  
+"<br>"+
+json["pages"][6]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][6]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][6]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd6;
+};
+
+function jsonSummary7EWF(json) {  
+jsonEnd7 = jsonSummary6EWF(json);
+jsonEnd7.completedHtml = jsonEnd7.completedHtml +  
+"<br>"+
+json["pages"][7]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][7]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][7]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd7;
+};
+
+function jsonSummary8EWF(json) {  
+jsonEnd8 = jsonSummary7EWF(json);
+jsonEnd8.completedHtml = jsonEnd8.completedHtml +  
+"<br>"+
+json["pages"][8]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][8]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][8]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd8;
+};
+
+function jsonSummary9EWF(json) {  
+jsonEnd9 = jsonSummary8EWF(json);
+jsonEnd9.completedHtml = jsonEnd9.completedHtml +  
+"<br>"+
+json["pages"][9]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][9]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][9]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd9;
+};
+
+
+function jsonSummary10EWF(json) {  
+jsonEnd10 = jsonSummary9EWF(json);
+jsonEnd10.completedHtml = jsonEnd10.completedHtml +  
+"<br>"+
+json["pages"][10]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][10]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][10]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd10;
+};
+
+
+function jsonSummary11EWF(json) {  
+jsonEnd11 = jsonSummary10EWF(json);
+jsonEnd11.completedHtml = jsonEnd11.completedHtml +  
+"<br>"+
+json["pages"][11]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][11]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][11]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd11;
+};
+
+
+
+</script>  
+<!-- This completes the code for the quizzes -->
+
+
+<!-- Various toggle functions used throughout --> 
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+function toggleQuiz(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Quiz Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";} }      
+</script>
+
+<!-- A few functions for revealing definitions -->
+<script language="javascript">
+<!--   $( function() {
+    $("#tabs").tabs();
+  } ); -->
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Interactive Features of Loss Data Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html"><i class="fa fa-check"></i><b>1</b> Introduction to Interactive Features</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#active-learning"><i class="fa fa-check"></i><b>1.1</b> Active Learning</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#S:Features"><i class="fa fa-check"></i><b>1.2</b> LDA Interactive Features</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#what-we-have"><i class="fa fa-check"></i><b>1.2.1</b> What we Have</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#in-process"><i class="fa fa-check"></i><b>1.2.2</b> In Process</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#plans-for-future-work"><i class="fa fa-check"></i><b>1.2.3</b> Plans for Future Work</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#S:NonFeatures"><i class="fa fa-check"></i><b>1.3</b> LDA Non-Interactive Features</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html"><i class="fa fa-check"></i><b>2</b> End of Section Quizzes</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#introduction-to-loss-data-analytics"><i class="fa fa-check"></i><b>2.1</b> 1. Introduction to Loss Data Analytics</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-1.1"><i class="fa fa-check"></i><b>2.1.1</b> Section 1.1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-1.2"><i class="fa fa-check"></i><b>2.1.2</b> Section 1.2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-1.3"><i class="fa fa-check"></i><b>2.1.3</b> Section 1.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#frequency-modeling"><i class="fa fa-check"></i><b>2.2</b> 2. Frequency Modeling</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.1"><i class="fa fa-check"></i><b>2.2.1</b> Section 2.1</a></li>
+<li class="chapter" data-level="2.2.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.2"><i class="fa fa-check"></i><b>2.2.2</b> Section 2.2</a></li>
+<li class="chapter" data-level="2.2.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.3"><i class="fa fa-check"></i><b>2.2.3</b> Section 2.3</a></li>
+<li class="chapter" data-level="2.2.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.4"><i class="fa fa-check"></i><b>2.2.4</b> Section 2.4</a></li>
+<li class="chapter" data-level="2.2.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.5"><i class="fa fa-check"></i><b>2.2.5</b> Section 2.5</a></li>
+<li class="chapter" data-level="2.2.6" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.6"><i class="fa fa-check"></i><b>2.2.6</b> Section 2.6</a></li>
+<li class="chapter" data-level="2.2.7" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.7"><i class="fa fa-check"></i><b>2.2.7</b> Section 2.7</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#modeling-loss-severity"><i class="fa fa-check"></i><b>2.3</b> 3. Modeling Loss Severity</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.1"><i class="fa fa-check"></i><b>2.3.1</b> Section 3.1</a></li>
+<li class="chapter" data-level="2.3.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.2"><i class="fa fa-check"></i><b>2.3.2</b> Section 3.2</a></li>
+<li class="chapter" data-level="2.3.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.3"><i class="fa fa-check"></i><b>2.3.3</b> Section 3.3</a></li>
+<li class="chapter" data-level="2.3.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.4"><i class="fa fa-check"></i><b>2.3.4</b> Section 3.4</a></li>
+<li class="chapter" data-level="2.3.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.5"><i class="fa fa-check"></i><b>2.3.5</b> Section 3.5</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#model-selection-and-estimation"><i class="fa fa-check"></i><b>2.4</b> 4. Model Selection and Estimation</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.1"><i class="fa fa-check"></i><b>2.4.1</b> Section 4.1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.2"><i class="fa fa-check"></i><b>2.4.2</b> Section 4.2</a></li>
+<li class="chapter" data-level="2.4.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.3"><i class="fa fa-check"></i><b>2.4.3</b> Section 4.3</a></li>
+<li class="chapter" data-level="2.4.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.4"><i class="fa fa-check"></i><b>2.4.4</b> Section 4.4</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#aggregate-loss-models"><i class="fa fa-check"></i><b>2.5</b> 5. Aggregate Loss Models</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.1"><i class="fa fa-check"></i><b>2.5.1</b> Section 5.1</a></li>
+<li class="chapter" data-level="2.5.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.2"><i class="fa fa-check"></i><b>2.5.2</b> Section 5.2</a></li>
+<li class="chapter" data-level="2.5.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.3"><i class="fa fa-check"></i><b>2.5.3</b> Section 5.3</a></li>
+<li class="chapter" data-level="2.5.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.4"><i class="fa fa-check"></i><b>2.5.4</b> Section 5.4</a></li>
+<li class="chapter" data-level="2.5.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.5"><i class="fa fa-check"></i><b>2.5.5</b> Section 5.5</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#risk-classification"><i class="fa fa-check"></i><b>2.6</b> 8. Risk Classification</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-8.1"><i class="fa fa-check"></i><b>2.6.1</b> Section 8.1</a></li>
+<li class="chapter" data-level="2.6.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-8.2"><i class="fa fa-check"></i><b>2.6.2</b> Section 8.2</a></li>
+<li class="chapter" data-level="2.6.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-8.3"><i class="fa fa-check"></i><b>2.6.3</b> Section 8.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#experience-rating-using-credibility-theory"><i class="fa fa-check"></i><b>2.7</b> 9. Experience Rating Using Credibility Theory</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.1"><i class="fa fa-check"></i><b>2.7.1</b> Section 9.1</a></li>
+<li class="chapter" data-level="2.7.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.2"><i class="fa fa-check"></i><b>2.7.2</b> Section 9.2</a></li>
+<li class="chapter" data-level="2.7.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.3"><i class="fa fa-check"></i><b>2.7.3</b> Section 9.3</a></li>
+<li class="chapter" data-level="2.7.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.6"><i class="fa fa-check"></i><b>2.7.4</b> Section 9.6</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#insurance-portfolio-management-including-reinsurance"><i class="fa fa-check"></i><b>2.8</b> 10. Insurance Portfolio Management including Reinsurance</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-10.1"><i class="fa fa-check"></i><b>2.8.1</b> Section 10.1</a></li>
+<li class="chapter" data-level="2.8.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-10.2"><i class="fa fa-check"></i><b>2.8.2</b> Section 10.2</a></li>
+<li class="chapter" data-level="2.8.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-10.3"><i class="fa fa-check"></i><b>2.8.3</b> Section 10.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#data-and-systems"><i class="fa fa-check"></i><b>2.9</b> 13. Data and Systems</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-13.1"><i class="fa fa-check"></i><b>2.9.1</b> Section 13.1</a></li>
+<li class="chapter" data-level="2.9.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-13.2"><i class="fa fa-check"></i><b>2.9.2</b> Section 13.2</a></li>
+<li class="chapter" data-level="2.9.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-13.3"><i class="fa fa-check"></i><b>2.9.3</b> Section 13.3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#dependence-modeling"><i class="fa fa-check"></i><b>2.10</b> 14. Dependence Modeling</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.1"><i class="fa fa-check"></i><b>2.10.1</b> Section 14.1</a></li>
+<li class="chapter" data-level="2.10.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.2"><i class="fa fa-check"></i><b>2.10.2</b> Section 14.2</a></li>
+<li class="chapter" data-level="2.10.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.3"><i class="fa fa-check"></i><b>2.10.3</b> Section 14.3</a></li>
+<li class="chapter" data-level="2.10.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.5"><i class="fa fa-check"></i><b>2.10.4</b> Section 14.5</a></li>
+<li class="chapter" data-level="2.10.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.6"><i class="fa fa-check"></i><b>2.10.5</b> Section 14.6</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="CExercises.html"><a href="CExercises.html"><i class="fa fa-check"></i><b>3</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="CExercises.html"><a href="CExercises.html#the-issue"><i class="fa fa-check"></i><b>3.1</b> The Issue</a></li>
+<li class="chapter" data-level="3.2" data-path="CExercises.html"><a href="CExercises.html#wordpress-exercises"><i class="fa fa-check"></i><b>3.2</b> Wordpress Exercises</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="CExercises.html"><a href="CExercises.html#frequency-modeling-1"><i class="fa fa-check"></i><b>3.2.1</b> 2. Frequency Modeling</a></li>
+<li class="chapter" data-level="3.2.2" data-path="CExercises.html"><a href="CExercises.html#modeling-loss-severity-1"><i class="fa fa-check"></i><b>3.2.2</b> 3. Modeling Loss Severity</a></li>
+<li class="chapter" data-level="3.2.3" data-path="CExercises.html"><a href="CExercises.html#model-selection-and-estimation-1"><i class="fa fa-check"></i><b>3.2.3</b> 4. Model Selection and Estimation</a></li>
+<li class="chapter" data-level="3.2.4" data-path="CExercises.html"><a href="CExercises.html#aggregate-loss-models-1"><i class="fa fa-check"></i><b>3.2.4</b> 5. Aggregate Loss Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="CStatisticalCode.html"><a href="CStatisticalCode.html"><i class="fa fa-check"></i><b>4</b> Statistical Code</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/ewfrees/InteractiveLDA" target="blank">Interactive Features of LDA on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Interactive Features of Loss Data Analytics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="CEndSectionQuizzes" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> End of Section Quizzes<a href="CEndSectionQuizzes.html#CEndSectionQuizzes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-to-loss-data-analytics" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 1. Introduction to Loss Data Analytics<a href="CEndSectionQuizzes.html#introduction-to-loss-data-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-1.1" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Section 1.1<a href="CEndSectionQuizzes.html#section-1.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement11">
+
+</div>
+<div id="surveyResult11">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz11.1" href="javascript:toggleQuiz
+('display.Quiz11.2','display.Quiz11.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz11.2" style="display: none">
+<p id="Quiz11Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz11.js">
+</script>
+</div>
+<div id="section-1.2" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Section 1.2<a href="CEndSectionQuizzes.html#section-1.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement12">
+
+</div>
+<div id="surveyResult12">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz12.1" href="javascript:toggleQuiz
+('display.Quiz12.2','display.Quiz12.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz12.2" style="display: none">
+<p id="Quiz12Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz12.js">
+</script>
+</div>
+<div id="section-1.3" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Section 1.3<a href="CEndSectionQuizzes.html#section-1.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement13">
+
+</div>
+<div id="surveyResult13">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz13.1" href="javascript:toggleQuiz
+('display.Quiz13.2','display.Quiz13.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz13.2" style="display: none">
+<p id="Quiz13Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz13.js">
+</script>
+</div>
+</div>
+<div id="frequency-modeling" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 2. Frequency Modeling<a href="CEndSectionQuizzes.html#frequency-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-2.1" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Section 2.1<a href="CEndSectionQuizzes.html#section-2.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement21">
+
+</div>
+<div id="surveyResult21">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz21.1" href="javascript:toggleQuiz
+('display.Quiz21.2','display.Quiz21.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz21.2" style="display: none">
+<p id="Quiz21Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz21.js">
+</script>
+</div>
+<div id="section-2.2" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Section 2.2<a href="CEndSectionQuizzes.html#section-2.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement22">
+
+</div>
+<div id="surveyResult22">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz22.1" href="javascript:toggleQuiz
+('display.Quiz22.2','display.Quiz22.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz22.2" style="display: none">
+<p id="Quiz22Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz22.js">
+</script>
+</div>
+<div id="section-2.3" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Section 2.3<a href="CEndSectionQuizzes.html#section-2.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement23">
+
+</div>
+<div id="surveyResult23">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz23.1" href="javascript:toggleQuiz
+('display.Quiz23.2','display.Quiz23.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz23.2" style="display: none">
+<p id="Quiz23Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz23.js">
+</script>
+</div>
+<div id="section-2.4" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Section 2.4<a href="CEndSectionQuizzes.html#section-2.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement24">
+
+</div>
+<div id="surveyResult24">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz24.1" href="javascript:toggleQuiz
+('display.Quiz24.2','display.Quiz24.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz24.2" style="display: none">
+<p id="Quiz24Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz24.js">
+</script>
+</div>
+<div id="section-2.5" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Section 2.5<a href="CEndSectionQuizzes.html#section-2.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement25">
+
+</div>
+<div id="surveyResult25">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz25.1" href="javascript:toggleQuiz
+('display.Quiz25.2','display.Quiz25.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz25.2" style="display: none">
+<p id="Quiz25Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz25.js">
+</script>
+</div>
+<div id="section-2.6" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Section 2.6<a href="CEndSectionQuizzes.html#section-2.6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement26">
+
+</div>
+<div id="surveyResult26">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz26.1" href="javascript:toggleQuiz
+('display.Quiz26.2','display.Quiz26.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz26.2" style="display: none">
+<p id="Quiz26Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz26.js">
+</script>
+</div>
+<div id="section-2.7" class="section level3 hasAnchor" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> Section 2.7<a href="CEndSectionQuizzes.html#section-2.7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement27">
+
+</div>
+<div id="surveyResult27">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz27.1" href="javascript:toggleQuiz
+('display.Quiz27.2','display.Quiz27.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz27.2" style="display: none">
+<p id="Quiz27Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz27.js">
+</script>
+</div>
+</div>
+<div id="modeling-loss-severity" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 3. Modeling Loss Severity<a href="CEndSectionQuizzes.html#modeling-loss-severity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-3.1" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Section 3.1<a href="CEndSectionQuizzes.html#section-3.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement31">
+
+</div>
+<div id="surveyResult31">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz31.1" href="javascript:toggleQuiz
+('display.Quiz31.2','display.Quiz31.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz31.2" style="display: none">
+<p id="Quiz31Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz31.js">
+</script>
+</div>
+<div id="section-3.2" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Section 3.2<a href="CEndSectionQuizzes.html#section-3.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement32">
+
+</div>
+<div id="surveyResult32">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz32.1" href="javascript:toggleQuiz
+('display.Quiz32.2','display.Quiz32.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz32.2" style="display: none">
+<p id="Quiz32Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz32.js">
+</script>
+</div>
+<div id="section-3.3" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Section 3.3<a href="CEndSectionQuizzes.html#section-3.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement33">
+
+</div>
+<div id="surveyResult33">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz33.1" href="javascript:toggleQuiz
+('display.Quiz33.2','display.Quiz33.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz33.2" style="display: none">
+<p id="Quiz33Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz33.js">
+</script>
+</div>
+<div id="section-3.4" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Section 3.4<a href="CEndSectionQuizzes.html#section-3.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement34">
+
+</div>
+<div id="surveyResult34">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz34.1" href="javascript:toggleQuiz
+('display.Quiz34.2','display.Quiz34.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz34.2" style="display: none">
+<p id="Quiz34Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz34.js">
+</script>
+</div>
+<div id="section-3.5" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Section 3.5<a href="CEndSectionQuizzes.html#section-3.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement35">
+
+</div>
+<div id="surveyResult35">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz35.1" href="javascript:toggleQuiz
+('display.Quiz35.2','display.Quiz35.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz35.2" style="display: none">
+<p id="Quiz35Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz35.js">
+</script>
+</div>
+</div>
+<div id="model-selection-and-estimation" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 4. Model Selection and Estimation<a href="CEndSectionQuizzes.html#model-selection-and-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-4.1" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Section 4.1<a href="CEndSectionQuizzes.html#section-4.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement41">
+
+</div>
+<div id="surveyResult41">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz41.1" href="javascript:toggleQuiz
+('display.Quiz41.2','display.Quiz41.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz41.2" style="display: none">
+<p id="Quiz41Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz41.js">
+</script>
+</div>
+<div id="section-4.2" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Section 4.2<a href="CEndSectionQuizzes.html#section-4.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement42">
+
+</div>
+<div id="surveyResult42">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz42.1" href="javascript:toggleQuiz
+('display.Quiz42.2','display.Quiz42.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz42.2" style="display: none">
+<p id="Quiz42Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz42.js">
+</script>
+</div>
+<div id="section-4.3" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Section 4.3<a href="CEndSectionQuizzes.html#section-4.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement43">
+
+</div>
+<div id="surveyResult43">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz43.1" href="javascript:toggleQuiz
+('display.Quiz43.2','display.Quiz43.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz43.2" style="display: none">
+<p id="Quiz43Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz43.js">
+</script>
+</div>
+<div id="section-4.4" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Section 4.4<a href="CEndSectionQuizzes.html#section-4.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement44">
+
+</div>
+<div id="surveyResult44">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz44.1" href="javascript:toggleQuiz
+('display.Quiz44.2','display.Quiz44.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz44.2" style="display: none">
+<p id="Quiz44Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz44.js">
+</script>
+</div>
+</div>
+<div id="aggregate-loss-models" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> 5. Aggregate Loss Models<a href="CEndSectionQuizzes.html#aggregate-loss-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-5.1" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Section 5.1<a href="CEndSectionQuizzes.html#section-5.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement51">
+
+</div>
+<div id="surveyResult51">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz51.1" href="javascript:toggleQuiz
+('display.Quiz51.2','display.Quiz51.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz51.2" style="display: none">
+<p id="Quiz51Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz51.js">
+</script>
+</div>
+<div id="section-5.2" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Section 5.2<a href="CEndSectionQuizzes.html#section-5.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement52">
+
+</div>
+<div id="surveyResult52">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz52.1" href="javascript:toggleQuiz
+('display.Quiz52.2','display.Quiz52.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz52.2" style="display: none">
+<p id="Quiz52Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz52.js">
+</script>
+</div>
+<div id="section-5.3" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Section 5.3<a href="CEndSectionQuizzes.html#section-5.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement53">
+
+</div>
+<div id="surveyResult53">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz53.1" href="javascript:toggleQuiz
+('display.Quiz53.2','display.Quiz53.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz53.2" style="display: none">
+<p id="Quiz53Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz53.js">
+</script>
+</div>
+<div id="section-5.4" class="section level3 hasAnchor" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Section 5.4<a href="CEndSectionQuizzes.html#section-5.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement54">
+
+</div>
+<div id="surveyResult54">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz54.1" href="javascript:toggleQuiz
+('display.Quiz54.2','display.Quiz54.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz54.2" style="display: none">
+<p id="Quiz54Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz54.js">
+</script>
+</div>
+<div id="section-5.5" class="section level3 hasAnchor" number="2.5.5">
+<h3><span class="header-section-number">2.5.5</span> Section 5.5<a href="CEndSectionQuizzes.html#section-5.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement55">
+
+</div>
+<div id="surveyResult55">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz55.1" href="javascript:toggleQuiz
+('display.Quiz55.2','display.Quiz55.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz55.2" style="display: none">
+<p id="Quiz55Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz55.js">
+</script>
+</div>
+</div>
+<div id="risk-classification" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> 8. Risk Classification<a href="CEndSectionQuizzes.html#risk-classification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-8.1" class="section level3 hasAnchor" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Section 8.1<a href="CEndSectionQuizzes.html#section-8.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement81">
+
+</div>
+<div id="surveyResult81">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz81.1" href="javascript:toggleQuiz
+('display.Quiz81.2','display.Quiz81.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz81.2" style="display: none">
+<p id="Quiz81Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz81.js">
+</script>
+</div>
+<div id="section-8.2" class="section level3 hasAnchor" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Section 8.2<a href="CEndSectionQuizzes.html#section-8.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement82">
+
+</div>
+<div id="surveyResult82">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz82.1" href="javascript:toggleQuiz
+('display.Quiz82.2','display.Quiz82.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz82.2" style="display: none">
+<p id="Quiz82Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz82.js">
+</script>
+</div>
+<div id="section-8.3" class="section level3 hasAnchor" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Section 8.3<a href="CEndSectionQuizzes.html#section-8.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement83">
+
+</div>
+<div id="surveyResult83">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz83.1" href="javascript:toggleQuiz
+('display.Quiz83.2','display.Quiz83.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz83.2" style="display: none">
+<p id="Quiz83Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz83.js">
+</script>
+</div>
+</div>
+<div id="experience-rating-using-credibility-theory" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> 9. Experience Rating Using Credibility Theory<a href="CEndSectionQuizzes.html#experience-rating-using-credibility-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-9.1" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Section 9.1<a href="CEndSectionQuizzes.html#section-9.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement91">
+
+</div>
+<div id="surveyResult91">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz91.1" href="javascript:toggleQuiz
+('display.Quiz91.2','display.Quiz91.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz91.2" style="display: none">
+<p id="Quiz91Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz91.js">
+</script>
+</div>
+<div id="section-9.2" class="section level3 hasAnchor" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> Section 9.2<a href="CEndSectionQuizzes.html#section-9.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement92">
+
+</div>
+<div id="surveyResult92">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz92.1" href="javascript:toggleQuiz
+('display.Quiz92.2','display.Quiz92.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz92.2" style="display: none">
+<p id="Quiz92Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz92.js">
+</script>
+</div>
+<div id="section-9.3" class="section level3 hasAnchor" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> Section 9.3<a href="CEndSectionQuizzes.html#section-9.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement93">
+
+</div>
+<div id="surveyResult93">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz93.1" href="javascript:toggleQuiz
+('display.Quiz93.2','display.Quiz93.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz93.2" style="display: none">
+<p id="Quiz93Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz93.js">
+</script>
+</div>
+<div id="section-9.6" class="section level3 hasAnchor" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> Section 9.6<a href="CEndSectionQuizzes.html#section-9.6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement96">
+
+</div>
+<div id="surveyResult96">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz96.1" href="javascript:toggleQuiz
+('display.Quiz96.2','display.Quiz96.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz96.2" style="display: none">
+<p id="Quiz96Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz96.js">
+</script>
+</div>
+</div>
+<div id="insurance-portfolio-management-including-reinsurance" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> 10. Insurance Portfolio Management including Reinsurance<a href="CEndSectionQuizzes.html#insurance-portfolio-management-including-reinsurance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-10.1" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> Section 10.1<a href="CEndSectionQuizzes.html#section-10.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement101">
+
+</div>
+<div id="surveyResult101">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz101.1" href="javascript:toggleQuiz
+('display.Quiz101.2','display.Quiz101.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz101.2" style="display: none">
+<p id="Quiz101Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz101.js">
+</script>
+</div>
+<div id="section-10.2" class="section level3 hasAnchor" number="2.8.2">
+<h3><span class="header-section-number">2.8.2</span> Section 10.2<a href="CEndSectionQuizzes.html#section-10.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement102">
+
+</div>
+<div id="surveyResult102">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz102.1" href="javascript:toggleQuiz
+('display.Quiz102.2','display.Quiz102.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz102.2" style="display: none">
+<p id="Quiz102Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz102.js">
+</script>
+</div>
+<div id="section-10.3" class="section level3 hasAnchor" number="2.8.3">
+<h3><span class="header-section-number">2.8.3</span> Section 10.3<a href="CEndSectionQuizzes.html#section-10.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement103">
+
+</div>
+<div id="surveyResult103">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz103.1" href="javascript:toggleQuiz
+('display.Quiz103.2','display.Quiz103.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz103.2" style="display: none">
+<p id="Quiz103Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz103.js">
+</script>
+</div>
+</div>
+<div id="data-and-systems" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> 13. Data and Systems<a href="CEndSectionQuizzes.html#data-and-systems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-13.1" class="section level3 hasAnchor" number="2.9.1">
+<h3><span class="header-section-number">2.9.1</span> Section 13.1<a href="CEndSectionQuizzes.html#section-13.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement131">
+
+</div>
+<div id="surveyResult131">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz131.1" href="javascript:toggleQuiz
+('display.Quiz131.2','display.Quiz131.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz131.2" style="display: none">
+<p id="Quiz131Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz131.js">
+</script>
+</div>
+<div id="section-13.2" class="section level3 hasAnchor" number="2.9.2">
+<h3><span class="header-section-number">2.9.2</span> Section 13.2<a href="CEndSectionQuizzes.html#section-13.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement132">
+
+</div>
+<div id="surveyResult132">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz132.1" href="javascript:toggleQuiz
+('display.Quiz132.2','display.Quiz132.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz132.2" style="display: none">
+<p id="Quiz132Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz132.js">
+</script>
+</div>
+<div id="section-13.3" class="section level3 hasAnchor" number="2.9.3">
+<h3><span class="header-section-number">2.9.3</span> Section 13.3<a href="CEndSectionQuizzes.html#section-13.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement133">
+
+</div>
+<div id="surveyResult133">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz133.1" href="javascript:toggleQuiz
+('display.Quiz133.2','display.Quiz133.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz133.2" style="display: none">
+<p id="Quiz133Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz133.js">
+</script>
+</div>
+</div>
+<div id="dependence-modeling" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> 14. Dependence Modeling<a href="CEndSectionQuizzes.html#dependence-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-14.1" class="section level3 hasAnchor" number="2.10.1">
+<h3><span class="header-section-number">2.10.1</span> Section 14.1<a href="CEndSectionQuizzes.html#section-14.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement141">
+
+</div>
+<div id="surveyResult141">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz141.1" href="javascript:toggleQuiz
+('display.Quiz141.2','display.Quiz141.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz141.2" style="display: none">
+<p id="Quiz141Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz141.js">
+</script>
+</div>
+<div id="section-14.2" class="section level3 hasAnchor" number="2.10.2">
+<h3><span class="header-section-number">2.10.2</span> Section 14.2<a href="CEndSectionQuizzes.html#section-14.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement142">
+
+</div>
+<div id="surveyResult142">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz142.1" href="javascript:toggleQuiz
+('display.Quiz142.2','display.Quiz142.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz142.2" style="display: none">
+<p id="Quiz142Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz142.js">
+</script>
+</div>
+<div id="section-14.3" class="section level3 hasAnchor" number="2.10.3">
+<h3><span class="header-section-number">2.10.3</span> Section 14.3<a href="CEndSectionQuizzes.html#section-14.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement143">
+
+</div>
+<div id="surveyResult143">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz143.1" href="javascript:toggleQuiz
+('display.Quiz143.2','display.Quiz143.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz143.2" style="display: none">
+<p id="Quiz143Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz143.js">
+</script>
+</div>
+<div id="section-14.5" class="section level3 hasAnchor" number="2.10.4">
+<h3><span class="header-section-number">2.10.4</span> Section 14.5<a href="CEndSectionQuizzes.html#section-14.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement145">
+
+</div>
+<div id="surveyResult145">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz145.1" href="javascript:toggleQuiz
+('display.Quiz145.2','display.Quiz145.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz145.2" style="display: none">
+<p id="Quiz145Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz145.js">
+</script>
+</div>
+<div id="section-14.6" class="section level3 hasAnchor" number="2.10.5">
+<h3><span class="header-section-number">2.10.5</span> Section 14.6<a href="CEndSectionQuizzes.html#section-14.6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="surveyElement146">
+
+</div>
+<div id="surveyResult146">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz146.1" href="javascript:toggleQuiz
+('display.Quiz146.2','display.Quiz146.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz146.2" style="display: none">
+<p id="Quiz146Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz146.js">
+</script>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-interactive-features.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="CExercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

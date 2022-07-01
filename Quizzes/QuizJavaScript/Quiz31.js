@@ -11,7 +11,7 @@ html:
 {questions: [{type: "radiogroup",
 name: "<b>Question 1</b>",
 choicesOrder: "random",
-title: `The square root of the second central moment is also known as`,
+title: `The square root of the second central moment is also known as $\\beta$`,
 cellType: "html",
 choices: [
 "The variance",

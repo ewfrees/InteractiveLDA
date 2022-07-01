@@ -22,7 +22,7 @@ One easy feature that we have already adopted extensively is to layer the conten
 * Exercise Solutions available via *Show/Hide* labels
 * Short demonstrations ("snippets") of mathematics available via *Show/Hide* labels
 
-Another feature (not so easy to code) that we have introduced is quizzes that appear at the end of each section. These quizzes are low-level formative assessment tools; they allow viewers to check their comprehension of material that they have just read. More details on **End of Section Quizzes** appear in Section \@ref(S:EndSectionQuizzes) of this summary.
+Another feature (not so easy to code) that we have introduced is quizzes that appear at the end of each section. These quizzes are low-level formative assessment tools; they allow viewers to check their comprehension of material that they have just read. More details on **End of Section Quizzes** appear in Section \@ref(CEndSectionQuizzes) of this summary.
 
 We have also incorporated a number of **Animated Graphs** graphs in the simulation Chapter 6. [Here](https://openacttexts.github.io/Loss-Data-Analytics/C-Simulation.html#S:ImportanceSampling) is one demonstration. These are coded in `R` - although moving (animated), they do not require user interaction.
 
@@ -30,7 +30,7 @@ We have also incorporated a number of **Animated Graphs** graphs in the simulati
 
 We are currently in the process of developing an **Online Glossary**. This is a feature that viewers regularly see in websites and so will not be overwhelming. The idea is to move the cursor/mouse over selected terms/phrases and have a definition appear. This is handy for insurance and statistical terms, as well as reminders of selected acronyms. 
 
-One of our big challenges will be to decide upon the type and extent of **Exercises** to include. See the Section \@ref(S:Exercises) for a summary.
+One of our big challenges will be to decide upon the type and extent of **Exercises** to include. See the Section \@ref(CExercises) for a summary.
 
 ### Plans for Future Work
 
@@ -38,7 +38,7 @@ There are a number of features that we now know how to implement in our environm
 
 *  **Video explanation of concepts**. This is easy to do with our system - see [the site](https://ewfreesres.github.io/RegressModel/index.html) for an example. The challenge is to recruit people willing to author the content.
 
-*  **Interactive statistical code**. As we move from a world of mathematical/probabilistic modeling to one that features data, we need to think more about how to integrate statistcal code into the pedagogy. See Section \@ref(S:StatisticalCode) for a summary.
+*  **Interactive statistical code**. As we move from a world of mathematical/probabilistic modeling to one that features data, we need to think more about how to integrate statistcal code into the pedagogy. See Section \@ref(CStatisticalCode) for a summary.
 
 *  **Interactive graphs**. The `R` package **Shiny** allows us to introduce interactive graphs. See [the site](https://ewfrees.github.io/LDARcode/index.html#32_gamma_distribution) for an example. Part of the issue is getting volunteers to author the content. Another part is that this package requires a bit more overhead so it is not clear as to whether this gets integrated into the book or is placed in a supporting site.
 

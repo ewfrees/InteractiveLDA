@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Interactive Features of Loss Data Analytics</title>
   <meta name="description" content="Interactive Features of Loss Data Analytics" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Interactive Features of Loss Data Analytics" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="https://github.com/ewfrees/Loss-Data-Analytics/InteractiveLDA/" />
@@ -32,8 +31,8 @@
   
 
 <link rel="next" href="introduction-to-interactive-features.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,10 +48,11 @@
 
 
 
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
-
-
-<!-- Mathjax -->
+<!-- Mathjax Version 2-->
 <script type='text/x-mathjax-config'>
 		MathJax.Hub.Config({
 			extensions: ['tex2jax.js'],
@@ -66,39 +66,27 @@
 		});
 </script>
 
+<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js"> </script>
+
+<!-- May wish to upgrade to Mathjax Version 3 Soon-->
+
+
 <!-- The following code is for the quizzes -->
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.jquery.min.js" integrity="sha512-crns4ssuZ0ZB7E/ObQ7zObXkCHZBlHeT6jIPf6wGiJdLS/enMRhXZhEeG2Bjn1zosfB2Juu3bsi7TZiFqYc1tQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.min.css" integrity="sha512-DWAuH8boE1jVPsuLezsDF0i/Jpuc+HsqkzU+KifRR7Q41ktYd0SotteMkdv61c+5CpYiH78nm5ps3fCpEbV/ww==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-<!-- 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.jquery.js" integrity="sha512-krInqrnBipjMi3+ndH1uacEWopMRgRduG6+NwrugsW/S7045SBOr/PmiOnEHwTK55HQhpHgQZEbTg+FlvEjpYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/survey-jquery/1.0.50/survey.css" integrity="sha512-VDXdSRnKoUbz2v9PTlz6bcHbZaAHaeE5FZhLAUKdGDgf6zG/CCoHQO9w+wInaFDiGuxrMfjK6Yh4NSQVlzHv5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+<link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
 
 
-<script src="https://unpkg.com/survey-jquery@1.6.2/survey.jquery.js"></script>
-<link href="https://unpkg.com/survey-jquery@1.6.2/survey.css" type="text/css" rel="stylesheet"/>
+<!-- This is the code before 2022 ...
 
-
-
-<script src="https://unpkg.com/survey-jquery@1.0.50/survey.jquery.js"></script>
-<link href="https://unpkg.com/survey-jquery@1.0.50/survey.css" type="text/css" rel="stylesheet"/>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js" integrity="sha512-xYCw466QkZIhmSWNzIpubbU0cgObksa2fKUd1nDY2hj0VOVksbWZQYnTX6pkQbPFrC9VMHCHb8msQ3W40n50Kg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
--->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script> 
-
-
-
+<script src="https://surveyjs.azureedge.net/1.0.50/survey.jquery.js"></script>
+<link href="https://surveyjs.azureedge.net/1.0.50/survey.css" type="text/css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>  
+ -->
+ 
+ 
 <script>
 function markdownConverterEWF() {  
 //Create showdown markdown converter
@@ -107,16 +95,17 @@ converter.setOption('ghCompatibleHeaderId', true);
 survey
     .onTextMarkdown
     .add(function (survey, options) {
-        //convert the mardown text to html
+        //convert the markdown text to html
         var str = converter.makeHtml(options.text);
         //remove root paragraphs <p></p>
         str = str.substring(3);
         str = str.substring(0, str.length - 4);
         //set html
         options.html = str;
-         MathJax.Hub.Queue(['Typeset',MathJax.Hub, 'options']);
+        MathJax.Hub.Queue(['Typeset',MathJax.Hub, 'options']);
     });  
 };
+
 // Quiz Header info
 const jsonHeader = { 
     showProgressBar: "bottom",
@@ -291,7 +280,7 @@ function toggleTheory(id1,id2) {
 function toggleQuiz(id1,id2) {
    var ele = document.getElementById(id1); var text = document.getElementById(id2);
    if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Quiz Solution";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";}}      
+      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";} }      
 </script>
 
 <!-- A few functions for revealing definitions -->
@@ -341,6 +330,7 @@ document.getElementById("defaultOpen").click();
 
 
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -369,93 +359,93 @@ document.getElementById("defaultOpen").click();
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="introduction-to-interactive-features.html"><a href="introduction-to-interactive-features.html#S:NonFeatures"><i class="fa fa-check"></i><b>1.3</b> LDA Non-Interactive Features</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html"><i class="fa fa-check"></i><b>2</b> End of Section Quizzes</a>
+<li class="chapter" data-level="2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html"><i class="fa fa-check"></i><b>2</b> End of Section Quizzes</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#introduction-to-loss-data-analytis"><i class="fa fa-check"></i><b>2.1</b> 1. Introduction to Loss Data Analytis</a>
+<li class="chapter" data-level="2.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#introduction-to-loss-data-analytics"><i class="fa fa-check"></i><b>2.1</b> 1. Introduction to Loss Data Analytics</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-1.1"><i class="fa fa-check"></i><b>2.1.1</b> Section 1.1</a></li>
-<li class="chapter" data-level="2.1.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-1.2"><i class="fa fa-check"></i><b>2.1.2</b> Section 1.2</a></li>
-<li class="chapter" data-level="2.1.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-1.3"><i class="fa fa-check"></i><b>2.1.3</b> Section 1.3</a></li>
+<li class="chapter" data-level="2.1.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-1.1"><i class="fa fa-check"></i><b>2.1.1</b> Section 1.1</a></li>
+<li class="chapter" data-level="2.1.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-1.2"><i class="fa fa-check"></i><b>2.1.2</b> Section 1.2</a></li>
+<li class="chapter" data-level="2.1.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-1.3"><i class="fa fa-check"></i><b>2.1.3</b> Section 1.3</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#frequency-modeling"><i class="fa fa-check"></i><b>2.2</b> 2. Frequency Modeling</a>
+<li class="chapter" data-level="2.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#frequency-modeling"><i class="fa fa-check"></i><b>2.2</b> 2. Frequency Modeling</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.1"><i class="fa fa-check"></i><b>2.2.1</b> Section 2.1</a></li>
-<li class="chapter" data-level="2.2.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.2"><i class="fa fa-check"></i><b>2.2.2</b> Section 2.2</a></li>
-<li class="chapter" data-level="2.2.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.3"><i class="fa fa-check"></i><b>2.2.3</b> Section 2.3</a></li>
-<li class="chapter" data-level="2.2.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.4"><i class="fa fa-check"></i><b>2.2.4</b> Section 2.4</a></li>
-<li class="chapter" data-level="2.2.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.5"><i class="fa fa-check"></i><b>2.2.5</b> Section 2.5</a></li>
-<li class="chapter" data-level="2.2.6" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.6"><i class="fa fa-check"></i><b>2.2.6</b> Section 2.6</a></li>
-<li class="chapter" data-level="2.2.7" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-2.7"><i class="fa fa-check"></i><b>2.2.7</b> Section 2.7</a></li>
+<li class="chapter" data-level="2.2.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.1"><i class="fa fa-check"></i><b>2.2.1</b> Section 2.1</a></li>
+<li class="chapter" data-level="2.2.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.2"><i class="fa fa-check"></i><b>2.2.2</b> Section 2.2</a></li>
+<li class="chapter" data-level="2.2.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.3"><i class="fa fa-check"></i><b>2.2.3</b> Section 2.3</a></li>
+<li class="chapter" data-level="2.2.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.4"><i class="fa fa-check"></i><b>2.2.4</b> Section 2.4</a></li>
+<li class="chapter" data-level="2.2.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.5"><i class="fa fa-check"></i><b>2.2.5</b> Section 2.5</a></li>
+<li class="chapter" data-level="2.2.6" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.6"><i class="fa fa-check"></i><b>2.2.6</b> Section 2.6</a></li>
+<li class="chapter" data-level="2.2.7" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-2.7"><i class="fa fa-check"></i><b>2.2.7</b> Section 2.7</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#modeling-loss-severity"><i class="fa fa-check"></i><b>2.3</b> 3. Modeling Loss Severity</a>
+<li class="chapter" data-level="2.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#modeling-loss-severity"><i class="fa fa-check"></i><b>2.3</b> 3. Modeling Loss Severity</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.1"><i class="fa fa-check"></i><b>2.3.1</b> Section 3.1</a></li>
-<li class="chapter" data-level="2.3.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.2"><i class="fa fa-check"></i><b>2.3.2</b> Section 3.2</a></li>
-<li class="chapter" data-level="2.3.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.3"><i class="fa fa-check"></i><b>2.3.3</b> Section 3.3</a></li>
-<li class="chapter" data-level="2.3.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.4"><i class="fa fa-check"></i><b>2.3.4</b> Section 3.4</a></li>
-<li class="chapter" data-level="2.3.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-3.5"><i class="fa fa-check"></i><b>2.3.5</b> Section 3.5</a></li>
+<li class="chapter" data-level="2.3.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.1"><i class="fa fa-check"></i><b>2.3.1</b> Section 3.1</a></li>
+<li class="chapter" data-level="2.3.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.2"><i class="fa fa-check"></i><b>2.3.2</b> Section 3.2</a></li>
+<li class="chapter" data-level="2.3.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.3"><i class="fa fa-check"></i><b>2.3.3</b> Section 3.3</a></li>
+<li class="chapter" data-level="2.3.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.4"><i class="fa fa-check"></i><b>2.3.4</b> Section 3.4</a></li>
+<li class="chapter" data-level="2.3.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-3.5"><i class="fa fa-check"></i><b>2.3.5</b> Section 3.5</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#model-selection-and-estimation"><i class="fa fa-check"></i><b>2.4</b> 4. Model Selection and Estimation</a>
+<li class="chapter" data-level="2.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#model-selection-and-estimation"><i class="fa fa-check"></i><b>2.4</b> 4. Model Selection and Estimation</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.1"><i class="fa fa-check"></i><b>2.4.1</b> Section 4.1</a></li>
-<li class="chapter" data-level="2.4.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.2"><i class="fa fa-check"></i><b>2.4.2</b> Section 4.2</a></li>
-<li class="chapter" data-level="2.4.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.3"><i class="fa fa-check"></i><b>2.4.3</b> Section 4.3</a></li>
-<li class="chapter" data-level="2.4.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-4.4"><i class="fa fa-check"></i><b>2.4.4</b> Section 4.4</a></li>
+<li class="chapter" data-level="2.4.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.1"><i class="fa fa-check"></i><b>2.4.1</b> Section 4.1</a></li>
+<li class="chapter" data-level="2.4.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.2"><i class="fa fa-check"></i><b>2.4.2</b> Section 4.2</a></li>
+<li class="chapter" data-level="2.4.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.3"><i class="fa fa-check"></i><b>2.4.3</b> Section 4.3</a></li>
+<li class="chapter" data-level="2.4.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-4.4"><i class="fa fa-check"></i><b>2.4.4</b> Section 4.4</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#aggregate-loss-models"><i class="fa fa-check"></i><b>2.5</b> 5. Aggregate Loss Models</a>
+<li class="chapter" data-level="2.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#aggregate-loss-models"><i class="fa fa-check"></i><b>2.5</b> 5. Aggregate Loss Models</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.1"><i class="fa fa-check"></i><b>2.5.1</b> Section 5.1</a></li>
-<li class="chapter" data-level="2.5.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.2"><i class="fa fa-check"></i><b>2.5.2</b> Section 5.2</a></li>
-<li class="chapter" data-level="2.5.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.3"><i class="fa fa-check"></i><b>2.5.3</b> Section 5.3</a></li>
-<li class="chapter" data-level="2.5.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.4"><i class="fa fa-check"></i><b>2.5.4</b> Section 5.4</a></li>
-<li class="chapter" data-level="2.5.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-5.5"><i class="fa fa-check"></i><b>2.5.5</b> Section 5.5</a></li>
+<li class="chapter" data-level="2.5.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.1"><i class="fa fa-check"></i><b>2.5.1</b> Section 5.1</a></li>
+<li class="chapter" data-level="2.5.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.2"><i class="fa fa-check"></i><b>2.5.2</b> Section 5.2</a></li>
+<li class="chapter" data-level="2.5.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.3"><i class="fa fa-check"></i><b>2.5.3</b> Section 5.3</a></li>
+<li class="chapter" data-level="2.5.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.4"><i class="fa fa-check"></i><b>2.5.4</b> Section 5.4</a></li>
+<li class="chapter" data-level="2.5.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-5.5"><i class="fa fa-check"></i><b>2.5.5</b> Section 5.5</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#risk-classification"><i class="fa fa-check"></i><b>2.6</b> 8. Risk Classification</a>
+<li class="chapter" data-level="2.6" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#risk-classification"><i class="fa fa-check"></i><b>2.6</b> 8. Risk Classification</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-8.1"><i class="fa fa-check"></i><b>2.6.1</b> Section 8.1</a></li>
-<li class="chapter" data-level="2.6.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-8.2"><i class="fa fa-check"></i><b>2.6.2</b> Section 8.2</a></li>
-<li class="chapter" data-level="2.6.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-8.3"><i class="fa fa-check"></i><b>2.6.3</b> Section 8.3</a></li>
+<li class="chapter" data-level="2.6.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-8.1"><i class="fa fa-check"></i><b>2.6.1</b> Section 8.1</a></li>
+<li class="chapter" data-level="2.6.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-8.2"><i class="fa fa-check"></i><b>2.6.2</b> Section 8.2</a></li>
+<li class="chapter" data-level="2.6.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-8.3"><i class="fa fa-check"></i><b>2.6.3</b> Section 8.3</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#experience-rating-using-credibility-theory"><i class="fa fa-check"></i><b>2.7</b> 9. Experience Rating Using Credibility Theory</a>
+<li class="chapter" data-level="2.7" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#experience-rating-using-credibility-theory"><i class="fa fa-check"></i><b>2.7</b> 9. Experience Rating Using Credibility Theory</a>
 <ul>
-<li class="chapter" data-level="2.7.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.1"><i class="fa fa-check"></i><b>2.7.1</b> Section 9.1</a></li>
-<li class="chapter" data-level="2.7.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.2"><i class="fa fa-check"></i><b>2.7.2</b> Section 9.2</a></li>
-<li class="chapter" data-level="2.7.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.3"><i class="fa fa-check"></i><b>2.7.3</b> Section 9.3</a></li>
-<li class="chapter" data-level="2.7.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-9.6"><i class="fa fa-check"></i><b>2.7.4</b> Section 9.6</a></li>
+<li class="chapter" data-level="2.7.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.1"><i class="fa fa-check"></i><b>2.7.1</b> Section 9.1</a></li>
+<li class="chapter" data-level="2.7.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.2"><i class="fa fa-check"></i><b>2.7.2</b> Section 9.2</a></li>
+<li class="chapter" data-level="2.7.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.3"><i class="fa fa-check"></i><b>2.7.3</b> Section 9.3</a></li>
+<li class="chapter" data-level="2.7.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-9.6"><i class="fa fa-check"></i><b>2.7.4</b> Section 9.6</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#insurance-portfolio-management-including-reinsurance"><i class="fa fa-check"></i><b>2.8</b> 10. Insurance Portfolio Management including Reinsurance</a>
+<li class="chapter" data-level="2.8" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#insurance-portfolio-management-including-reinsurance"><i class="fa fa-check"></i><b>2.8</b> 10. Insurance Portfolio Management including Reinsurance</a>
 <ul>
-<li class="chapter" data-level="2.8.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-10.1"><i class="fa fa-check"></i><b>2.8.1</b> Section 10.1</a></li>
-<li class="chapter" data-level="2.8.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-10.2"><i class="fa fa-check"></i><b>2.8.2</b> Section 10.2</a></li>
-<li class="chapter" data-level="2.8.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-10.3"><i class="fa fa-check"></i><b>2.8.3</b> Section 10.3</a></li>
+<li class="chapter" data-level="2.8.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-10.1"><i class="fa fa-check"></i><b>2.8.1</b> Section 10.1</a></li>
+<li class="chapter" data-level="2.8.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-10.2"><i class="fa fa-check"></i><b>2.8.2</b> Section 10.2</a></li>
+<li class="chapter" data-level="2.8.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-10.3"><i class="fa fa-check"></i><b>2.8.3</b> Section 10.3</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#data-and-systems"><i class="fa fa-check"></i><b>2.9</b> 13. Data and Systems</a>
+<li class="chapter" data-level="2.9" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#data-and-systems"><i class="fa fa-check"></i><b>2.9</b> 13. Data and Systems</a>
 <ul>
-<li class="chapter" data-level="2.9.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-13.1"><i class="fa fa-check"></i><b>2.9.1</b> Section 13.1</a></li>
-<li class="chapter" data-level="2.9.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-13.2"><i class="fa fa-check"></i><b>2.9.2</b> Section 13.2</a></li>
-<li class="chapter" data-level="2.9.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-13.3"><i class="fa fa-check"></i><b>2.9.3</b> Section 13.3</a></li>
+<li class="chapter" data-level="2.9.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-13.1"><i class="fa fa-check"></i><b>2.9.1</b> Section 13.1</a></li>
+<li class="chapter" data-level="2.9.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-13.2"><i class="fa fa-check"></i><b>2.9.2</b> Section 13.2</a></li>
+<li class="chapter" data-level="2.9.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-13.3"><i class="fa fa-check"></i><b>2.9.3</b> Section 13.3</a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#dependence-modeling"><i class="fa fa-check"></i><b>2.10</b> 14. Dependence Modeling</a>
+<li class="chapter" data-level="2.10" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#dependence-modeling"><i class="fa fa-check"></i><b>2.10</b> 14. Dependence Modeling</a>
 <ul>
-<li class="chapter" data-level="2.10.1" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.1"><i class="fa fa-check"></i><b>2.10.1</b> Section 14.1</a></li>
-<li class="chapter" data-level="2.10.2" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.2"><i class="fa fa-check"></i><b>2.10.2</b> Section 14.2</a></li>
-<li class="chapter" data-level="2.10.3" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.3"><i class="fa fa-check"></i><b>2.10.3</b> Section 14.3</a></li>
-<li class="chapter" data-level="2.10.4" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.5"><i class="fa fa-check"></i><b>2.10.4</b> Section 14.5</a></li>
-<li class="chapter" data-level="2.10.5" data-path="S-EndSectionQuizzes.html"><a href="S-EndSectionQuizzes.html#section-14.6"><i class="fa fa-check"></i><b>2.10.5</b> Section 14.6</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="S-Exercises.html"><a href="S-Exercises.html"><i class="fa fa-check"></i><b>3</b> Exercises</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="S-Exercises.html"><a href="S-Exercises.html#the-issue"><i class="fa fa-check"></i><b>3.1</b> The Issue</a></li>
-<li class="chapter" data-level="3.2" data-path="S-Exercises.html"><a href="S-Exercises.html#wordpress-exercises"><i class="fa fa-check"></i><b>3.2</b> Wordpress Exercises</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="S-Exercises.html"><a href="S-Exercises.html#frequency-modeling-1"><i class="fa fa-check"></i><b>3.2.1</b> 2. Frequency Modeling</a></li>
-<li class="chapter" data-level="3.2.2" data-path="S-Exercises.html"><a href="S-Exercises.html#modeling-loss-severity-1"><i class="fa fa-check"></i><b>3.2.2</b> 3. Modeling Loss Severity</a></li>
-<li class="chapter" data-level="3.2.3" data-path="S-Exercises.html"><a href="S-Exercises.html#model-selection-and-estimation-1"><i class="fa fa-check"></i><b>3.2.3</b> 4. Model Selection and Estimation</a></li>
-<li class="chapter" data-level="3.2.4" data-path="S-Exercises.html"><a href="S-Exercises.html#aggregate-loss-models-1"><i class="fa fa-check"></i><b>3.2.4</b> 5. Aggregate Loss Models</a></li>
+<li class="chapter" data-level="2.10.1" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.1"><i class="fa fa-check"></i><b>2.10.1</b> Section 14.1</a></li>
+<li class="chapter" data-level="2.10.2" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.2"><i class="fa fa-check"></i><b>2.10.2</b> Section 14.2</a></li>
+<li class="chapter" data-level="2.10.3" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.3"><i class="fa fa-check"></i><b>2.10.3</b> Section 14.3</a></li>
+<li class="chapter" data-level="2.10.4" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.5"><i class="fa fa-check"></i><b>2.10.4</b> Section 14.5</a></li>
+<li class="chapter" data-level="2.10.5" data-path="CEndSectionQuizzes.html"><a href="CEndSectionQuizzes.html#section-14.6"><i class="fa fa-check"></i><b>2.10.5</b> Section 14.6</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="S-StatisticalCode.html"><a href="S-StatisticalCode.html"><i class="fa fa-check"></i><b>4</b> Statistical Code</a></li>
+<li class="chapter" data-level="3" data-path="CExercises.html"><a href="CExercises.html"><i class="fa fa-check"></i><b>3</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="CExercises.html"><a href="CExercises.html#the-issue"><i class="fa fa-check"></i><b>3.1</b> The Issue</a></li>
+<li class="chapter" data-level="3.2" data-path="CExercises.html"><a href="CExercises.html#wordpress-exercises"><i class="fa fa-check"></i><b>3.2</b> Wordpress Exercises</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="CExercises.html"><a href="CExercises.html#frequency-modeling-1"><i class="fa fa-check"></i><b>3.2.1</b> 2. Frequency Modeling</a></li>
+<li class="chapter" data-level="3.2.2" data-path="CExercises.html"><a href="CExercises.html#modeling-loss-severity-1"><i class="fa fa-check"></i><b>3.2.2</b> 3. Modeling Loss Severity</a></li>
+<li class="chapter" data-level="3.2.3" data-path="CExercises.html"><a href="CExercises.html#model-selection-and-estimation-1"><i class="fa fa-check"></i><b>3.2.3</b> 4. Model Selection and Estimation</a></li>
+<li class="chapter" data-level="3.2.4" data-path="CExercises.html"><a href="CExercises.html#aggregate-loss-models-1"><i class="fa fa-check"></i><b>3.2.4</b> 5. Aggregate Loss Models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="CStatisticalCode.html"><a href="CStatisticalCode.html"><i class="fa fa-check"></i><b>4</b> Statistical Code</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/ewfrees/InteractiveLDA" target="blank">Interactive Features of LDA on GitHub</a></li>
 
@@ -480,10 +470,10 @@ document.getElementById("defaultOpen").click();
 <h1 class="title">Interactive Features of Loss Data Analytics</h1>
 <p class="author"><em>An open text authored by the Actuarial Community</em></p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
+<div id="preface" class="section level1 unnumbered hasAnchor">
+<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p style="text-align:right;">
-<em>Date: 28 June 2022</em>
+<em>Date: 01 July 2022</em>
 </p>
 <p>This repository describes interactive features of the <em>Loss Data Analytics</em> text that are being developed, in process, and in the planning stages. By <strong>interactive features</strong>, we start with simple things like layering content (such as Show/Hide way of displaying code below) and moving on from there.</p>
 <h5 style="text-align: center;">
@@ -509,7 +499,6 @@ table(Insample2010$Freq)</code></pre>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -528,6 +517,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -548,6 +538,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

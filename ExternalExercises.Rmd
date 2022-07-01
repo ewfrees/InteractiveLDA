@@ -1,4 +1,4 @@
-# Exercises {#S:Exercises}
+# Exercises {#CExercises}
 
 ## The Issue
 
@@ -43,7 +43,7 @@ We can explore bringing them into the `R` **Bookdown** environment.
 </p>
 
 
-# Statistical Code {#S:StatisticalCode}
+# Statistical Code {#CStatisticalCode}
 
 *  As the baseline, we have already remarked that `R` statistical code appears in the text, although it does not overwhelm readers via the *Show/Hide* features that we are using.
 

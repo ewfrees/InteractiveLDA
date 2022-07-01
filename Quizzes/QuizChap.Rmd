@@ -1,11 +1,14 @@
-# End of Section Quizzes {#S:EndSectionQuizzes}
+# End of Section Quizzes {#CEndSectionQuizzes}
 
-## 1. Introduction to Loss Data Analytis
+
+
+## 1. Introduction to Loss Data Analytics
 
 ### Section 1.1 
 
 ```{r child = './Quizzes/Quiz11.html'}
 ```
+
 
 ### Section 1.2
 
@@ -32,6 +35,7 @@
 
 ```{r child = './Quizzes/Quiz23.html'}
 ```
+
 
 ### Section 2.4
 

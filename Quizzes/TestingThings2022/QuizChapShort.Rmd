@@ -1,0 +1,7 @@
+# End of Section Quizzes {#CEndSectionQuizzes}
+
+
+### Section 2.3
+
+```{r child = './Quizzes/Quiz23Test.html'}
+```

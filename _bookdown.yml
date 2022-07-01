@@ -5,6 +5,7 @@ rmd_files: ["References/Packages.Rmd",
             "index.Rmd",
             "IntroInteractive.Rmd",
             "Quizzes/QuizChap.Rmd",
+ #           "Quizzes/QuizChapShort.Rmd"]            
             "ExternalExercises.Rmd"]
            
 language:
